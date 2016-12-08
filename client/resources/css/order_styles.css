@@ -1,0 +1,20 @@
+/* ----------------------------------- */
+/* ORDER FORM */
+/* ----------------------------------- */
+
+.newOrderForm table {
+  width: 100%;
+}
+
+.newOrderForm table, th, td {
+  border: 1px solid;
+  border-collapse: collapse;
+}
+
+.newOrderForm__table input {
+  border: none;
+}
+
+.newOrderForm__price, input[type=number] {
+  width: 100%;
+}

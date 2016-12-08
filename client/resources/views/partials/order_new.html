@@ -1,0 +1,290 @@
+<div layout="row" layout-align="center" layout-margin>
+  <div flex="70" layout="column" layout-padding layout-margin md-whiteframe="2">
+    <h1>Create new order form (admin)</h1>
+    <form name="orderNewForm" flex layout="column" ng-submit="ordersCtrl.newOrder(ordersCtrl.order)">
+      <!-- Basic student information -->
+      <div layout="row" layout-padding>
+        <md-input-container flex>
+          <label>Title of design</label>
+          <input type="text" ng-model="ordersCtrl.order.title" ></input>
+          <div ng-messages="">
+            <div ng-message="required"></div>
+          </div>
+        </md-input-container>
+        <md-input-container flex>
+          <label>Invoice Number</label>
+          <input type="text"  ng-model="ordersCtrl.order.invoice"></input>
+          <div ng-messages="">
+            <div ng-message="required"></div>
+          </div>
+        </md-input-container>
+      </div>
+
+      <div layout="row" layout-padding>
+        <md-input-container flex>
+          <label>School</label>
+          <md-select ng-model="ordersCtrl.order.selectedSchool" placeholder="Select school">
+            <md-option ng-repeat="school in ordersCtrl.schoolList" value="{{school}}">
+            {{school}}
+            </md-option>
+          </md-select>
+        </md-input-container>
+        <md-input-container flex>
+          <label>Class of</label>
+          <md-select ng-model="ordersCtrl.order.selectedClass" placeholder="Class of">
+            <md-option ng-repeat="class in ordersCtrl.classList" value="{{class}}">
+              {{class}}
+            </md-option>
+          </md-select>
+        </md-input-container>
+        <md-input-container flex>
+          <label>Grade</label>
+          <md-select ng-model="ordersCtrl.order.selectedGrade" placeholder="Grade">
+            <md-option value="Freshmen">Freshmen</md-option>
+            <md-option value="Sophmores">Sophmores</md-option>
+            <md-option value="Juniors">Juniors</md-option>
+            <md-option value="Seniors">Seniors</md-option>
+          </md-select>
+        </md-input-container>
+      </div>
+
+      <!-- Quantity / size breakdown -->
+
+      <h3 layout-margin>Quantity breakdown</h3>
+      <div layout="row" layout-padding>
+        <md-input-container class="md-block">
+          <label>X-Small</label>
+          <input type="number" step="1" name="rate" ng-model="ordersCtrl.order.sizeBreakdown.xsmall" min="0" />
+        </md-input-container>
+        <md-input-container class="md-block">
+          <label>Small</label>
+          <input type="number" step="1" name="rate" ng-model="ordersCtrl.order.sizeBreakdown.small" min="0" />
+        </md-input-container>
+        <md-input-container class="md-block">
+          <label>Medium</label>
+          <input type="number" step="1" name="rate" ng-model="ordersCtrl.order.sizeBreakdown.medium" min="0" />
+        </md-input-container>
+        <md-input-container class="md-block">
+          <label>Large</label>
+          <input type="number" step="1" name="rate" ng-model="ordersCtrl.order.sizeBreakdown.large" min="0" />
+        </md-input-container>
+        <md-input-container class="md-block">
+          <label>X-Large</label>
+          <input type="number" step="1" name="rate" ng-model="ordersCtrl.order.sizeBreakdown.xlarge" min="0" />
+        </md-input-container>
+        <md-input-container class="md-block">
+          <label>XX-Large</label>
+          <input type="number" step="1" name="rate" ng-model="ordersCtrl.order.sizeBreakdown.xxlarge" min="0" />
+        </md-input-container>
+        <md-input-container class="md-block">
+          <label>XXX-Large</label>
+          <input type="number" step="1" name="rate" ng-model="ordersCtrl.order.sizeBreakdown.xxxlarge" min="0" />
+        </md-input-container>
+      </div>
+
+      <!-- Apparel and design details -->
+
+      <h3 layout-margin>Apparel type and design details</h3>
+      <div layout="row" layout-padding flex>
+        <md-input-container flex>
+          <label>Brand and Model Number</label>
+          <md-select ng-model="ordersCtrl.order.selectedModel" ng-change="ordersCtrl.changedModel()">
+            <md-option ng-repeat="model in ordersCtrl.modelList" value="{{model}}">
+              {{model[0]}} - {{model[1]}} - {{model[2]}}
+            </md-option>
+          </md-select>
+        </md-input-container>
+        <md-input-container flex>
+          <label>Color</label>
+          <md-select ng-model="ordersCtrl.order.selectedColor">
+            <md-option ng-repeat="color in ordersCtrl.order.colorList" value="{{color}}">
+              {{color}}
+            </md-option>
+          </md-select>
+        </md-input-container>
+      </div>
+
+      <md-button class="md-primary md-raised" ng-click="showTabDialog($event)">
+        Color Chart - {{ordersCtrl.parsedSelectedModel[1]}}
+      </md-button>
+
+      <md-input-container layout-margin flex>
+        <label>Describe design specs</label>
+        <textarea ng-model="ordersCtrl.order.description" md-maxlength="150" rows="3" md-select-on-focus></textarea>
+      </md-input-container>
+
+      <!-- Print locations and dimensions of design-->
+
+      <h3 layout-margin>Print Locations:</h3>
+      <div layout="column">
+        <md-input-container flex="20">
+          <label>Full Front Dimension</label>
+          <input type="text" ng-model="ordersCtrl.order.selectedLoc.fullfront.dimension" placeholder='ex: 5" x 5"'></input>
+        </md-input-container>
+        <input type="file" id="fullFrontMain" ng-model="ordersCtrl.order.selectedLoc.fullfront.artFile" onchange="angular.element(this).scope().imgPreview(event)"></input>
+      </div>
+      <div layout="row">
+        <img ng-src="{{image_source1}}" style="width:100px; height:100px">
+        <button ng-click="ordersCtrl.order.selectedLoc.fullfront.artFile = null" ng-show="image_source">Remove</button>
+      </div>
+      <!-- <div layout="row" layout-padding>
+        <md-input-container flex="20">
+          <label>Medium Front Dimension</label>
+          <input type="text" ng-model="ordersCtrl.order.selectedLoc.mediumfront.dimension" placeholder='ex: 5" x 5"'></input>
+        </md-input-container>
+        <md-input-container flex>
+          <input type="file" ng-model="ordersCtrl.order.selectedLoc.mediumfront.artFile"></input>
+        </md-input-container>
+        <md-input-container flex>
+          <label>Art + Apparel URL</label>
+          <input type="text" ng-model="ordersCtrl.order.selectedLoc.mediumfront.artAndApparelFile"></input>
+        </md-input-container>
+      </div>
+      <div layout="row" layout-padding>
+        <md-input-container flex="20">
+          <label>Center Chest Dimension</label>
+          <input type="text" ng-model="ordersCtrl.order.selectedLoc.centerchest.dimension" placeholder='ex: 5" x 5"'></input>
+        </md-input-container>
+        <md-input-container flex>
+          <label>Art Only URL</label>
+          <input type="text" ng-model="ordersCtrl.order.selectedLoc.centerchest.artFile"></input>
+        </md-input-container>
+        <md-input-container flex>
+          <label>Art + Apparel URL</label>
+          <input type="text" ng-model="ordersCtrl.order.selectedLoc.centerchest.artAndApparelFile"></input>
+        </md-input-container>
+      </div>
+      <div layout="row" layout-padding>
+        <md-input-container flex="20">
+          <label>Left Chest Dimension</label>
+          <input type="text" ng-model="ordersCtrl.order.selectedLoc.leftchest.dimension" placeholder='ex: 5" x 5"'></input>
+        </md-input-container>
+        <md-input-container flex>
+          <label>Art Only URL</label>
+          <input type="text" ng-model="ordersCtrl.order.selectedLoc.leftchest.artFile"></input>
+        </md-input-container>
+        <md-input-container flex>
+          <label>Art + Apparel URL</label>
+          <input type="text" ng-model="ordersCtrl.order.selectedLoc.leftchest.artAndApparelFile"></input>
+        </md-input-container>
+      </div>
+      <div layout="row" layout-padding>
+        <md-input-container flex="20">
+          <label>Right Chest Dimension</label>
+          <input type="text" ng-model="ordersCtrl.order.selectedLoc.rightchest.dimension" placeholder='ex: 5" x 5"'></input>
+        </md-input-container>
+        <md-input-container flex>
+          <label>Art Only URL</label>
+          <input type="text" ng-model="ordersCtrl.order.selectedLoc.rightchest.artFile"></input>
+        </md-input-container>
+        <md-input-container flex>
+          <label>Art + Apparel URL</label>
+          <input type="text" ng-model="ordersCtrl.order.selectedLoc.rightchest.artAndApparelFile"></input>
+        </md-input-container>
+      </div>
+      <div layout="row" layout-padding>
+        <md-input-container flex="20">
+          <label>Across Chest Dimension</label>
+          <input type="text" ng-model="ordersCtrl.order.selectedLoc.acrosschest.dimension" placeholder='ex: 5" x 5"'></input>
+        </md-input-container>
+        <md-input-container flex>
+          <label>Art Only URL</label>
+          <input type="text" ng-model="ordersCtrl.order.selectedLoc.acrosschest.artFile"></input>
+        </md-input-container>
+        <md-input-container flex>
+          <label>Art + Apparel URL</label>
+          <input type="text" ng-model="ordersCtrl.order.selectedLoc.acrosschest.artAndApparelFile"></input>
+        </md-input-container>
+      </div>
+      <div layout="row" layout-padding>
+        <md-input-container flex="20">
+          <label>Full Back Dimension</label>
+          <input type="text" ng-model="ordersCtrl.order.selectedLoc.fullback.dimension" placeholder='ex: 5" x 5"'></input>
+        </md-input-container>
+        <md-input-container flex>
+          <label>Art Only URL</label>
+          <input type="text" ng-model="ordersCtrl.order.selectedLoc.fullback.artFile"></input>
+        </md-input-container>
+        <md-input-container flex>
+          <label>Art + Apparel URL</label>
+          <input type="text" ng-model="ordersCtrl.order.selectedLoc.fullback.artAndApparelFile"></input>
+        </md-input-container>
+      </div>
+ -->
+
+
+      <md-input-container flex layout-margin>
+        <label>Price</label>
+        <input type="number" ng-model="ordersCtrl.order.price"></input>
+      </md-input-container>
+
+
+      <label for="input-file-id" class="md-button md-raised">Upload Art Files</label>
+      <input class="ng-hide" id="input-file-id" type="file" multiple accept="image/*" name="file" file-model="ordersCtrl.order.myFile"/>
+
+      <md-button class="md-raised md-primary" type="submit">Create order</md-button>
+    </form>
+  </div>
+</div>
+
+<!-- <section>
+  <div class="row">
+    <h2>Create Order</h2>
+    <form name="newOrderForm" class="newOrderForm" enctype="multipart/form-data">
+      <label>Title of design</label>
+      <input type="text" ng-model="order.title"></input>
+
+      <label>Description</label>
+      <textarea type="text" ng-model="order.description"></textarea>
+
+      <label>School</label>
+      <select name="school" ng-model="order.school">
+        <option value="" disabled="disabled">-- select a school --</option>
+        <option value="ind">Independence High School</option>
+        <option value="sc">Silver Creek High School</option>
+        <option value="mp">Mt. Pleasant High School</option>
+      </select>
+
+      <label>Size Breakdown</label>
+      <table class="newORderForm__table">
+        <tr>
+          <th>X-Small</th>
+          <th>Small</th>
+          <th>Medium</th>
+          <th>Large</th>
+          <th>X-Large</th>
+          <th>XX-Large</th>
+        </tr>
+        <tr>
+          <td><input type="number" ng-model="order.xsmall"></input></td>
+          <td><input type="number" ng-model="order.small"></input></td>
+          <td><input type="number" ng-model="order.medium"></input></td>
+          <td><input type="number" ng-model="order.large"></input></td>
+          <td><input type="number" ng-model="order.xlarge"></input></td>
+          <td><input type="number" ng-model="order.xxlarge"></input></td>
+        </tr>
+      </table>
+
+      <label>Shirt type</label>
+      <select>
+        <option></option>
+      </select>
+
+      <label>Price</label>
+      <input type="number" name="price" class="newOrderForm__price" ng-model="order.price"></input>
+
+      <label>Upload Image</label>
+      <input type="file" accept="image/*" name="file" file-model="order.myFile"></input>
+
+      <label>Invoice Number</label>
+      <input type="number" ng-model="order.invoiceNumber"></input>
+
+      <button type="submit" ng-click="newOrder()">Submit</button>
+    </form>
+    {{ order }}
+    {{ filetest }}
+    {{ order.file }}
+    {{ progress }}
+  </div>
+</section>
+ -->

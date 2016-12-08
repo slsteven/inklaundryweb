@@ -1,0 +1,113 @@
+/****************************\
+
+  SETUP
+
+\****************************/
+
+.row {
+  max-width: 1140px;
+  margin: 0 auto;
+}
+
+
+.login {
+  height:100vh;
+  width: 100%;
+}
+
+
+/****************************\
+
+  HEADER
+
+\****************************/
+.header--logo img {
+  height: 50px;
+  width: auto;
+}
+
+/*.main-nav {
+  height: 100px;
+  background-color: yellow;
+  list-style: none;
+
+}
+.main-nav--logo {
+  height: 50px;
+  width: auto;
+  margin-top: 15px;
+  float: left;
+}
+.main-nav--links {
+  float:right;
+  margin-top: 30px;
+}
+.main-nav--links li {
+  display: inline-block;
+  margin-left: 30px;
+}
+.main-nav--links li a {
+  text-decoration: none;
+}
+*/
+
+
+/****************************\
+
+  ORDER SHOW PAGE
+
+\****************************/
+
+.ordershow {
+  height: 90vh;
+}
+
+.left-card {
+  height: 100%;
+  text-align: center;
+}
+.left-card--items {
+  background-color: white;
+}
+.left-card--items div {
+  padding: 3px 0;
+}
+
+.left-card--items div > span {
+  text-align: center;
+  display: block;
+  font-size: 12px;
+}
+
+.left-card--items img {
+  display: block;
+  margin: auto;
+  width: 70%;
+  height: auto;
+}
+
+.middle-card {
+  height: 90vh;
+}
+.middle-card--image {
+  width: 70%;
+  height: auto;
+  padding-top:15px;
+}
+.middle-card--content {
+  padding-left: 10%;
+  padding-right: 10%;
+  text-align: center;
+}
+.right-card {
+  height: 100%;
+}
+.right-card--input {
+  height: 10px;
+  font-size: 15px;
+}
+.right-card--image {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}

@@ -1,0 +1,37 @@
+{
+  "name": "inklaundry_website",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "angular-material": "^1.1.1",
+    "aws-sdk": "^2.6.11",
+    "bcrypt-nodejs": "latest",
+    "body-parser": "^1.15.2",
+    "connect-flash": "^0.1.1",
+    "connect-multiparty": "^2.0.0",
+    "cookie-parser": "~1.0.0",
+    "dateformat": "^1.0.12",
+    "dotenv": "^2.0.0",
+    "ejs": "1.0.0",
+    "express": "~4.10.0",
+    "express-session": "^1.14.1",
+    "method-override": "^1.0.2",
+    "mongoose": "^4.1.1",
+    "morgan": "~1.0.0",
+    "multer": "^1.2.0",
+    "multer-s3": "^2.3.2",
+    "nodemailer": "^2.6.4",
+    "passport": "^0.3.2",
+    "passport-facebook": "^2.1.1",
+    "passport-local": "^1.0.0",
+    "s3fs": "^2.5.0"
+  }
+}

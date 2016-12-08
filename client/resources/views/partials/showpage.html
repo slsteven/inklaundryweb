@@ -1,0 +1,38 @@
+<nav>
+  <div class="row">
+    <img src="resources/img/logo-white.jpg" class="logo">
+    <img src="resources/img/logo.png" class="logo-black">
+    <ul>
+      <li><a href="">Login/Signup</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section>
+  <div class="row">
+    <form name='userForm'>
+      <label for='first_name'>First Name</label>
+      <input
+        type='text'
+        id='first_name'
+        name='first_name'
+        ng-model='user.first_name'
+        required />
+      <button ng-click='addUser(user)'>Submit</button>
+      <div ng-messages='userForm.first_name.$error'>
+        <p ng-message='minlength'>Name is too short</p>
+        <p ng-message='required'>Name is required</p>
+      </div>
+    </form>
+
+    <hr>
+
+    <p>twitter/{{ lowerCaseHandle() }}</p>
+
+
+
+    <input type="text" ng-model="name">{{ name }}</input>
+  </div>
+
+
+</section>

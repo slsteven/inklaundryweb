@@ -1,0 +1,40 @@
+<div class="sub-nav"layout="row" layout-margin layout-align="end">
+  <a ui-sref="landing">Back</a>
+</div>
+
+<section class="section-form">
+  <div layout="column">
+    <h2>Email Us</h2>
+  </div>
+  <div layout="column" flex="40" flex-offset="30" flex-sm="60" flex-offset-sm="20" flex-xs="90" flex-offset-xs="5">
+    <div ng-show="error">{{ errorMessage }}</div>
+
+    <form name="contactForm" ng-submit="newContact(contact)" layout="column">
+      <md-input-container flex>
+        <label>Name</label>
+        <input type="text" name="name" ng-model="contact.name"></input>
+      </md-input-container>
+      <md-input-container flex>
+        <label>Email</label>
+        <input type="text" name="email" ng-model="contact.email"></input>
+      </md-input-container>
+      <md-input-container flex>
+        <label>Subject</label>
+        <input type="text" name="email" ng-model="contact.title"></input>
+      </md-input-container>
+      <md-input-container  flex>
+        <label>Details</label>
+        <textarea ng-model="contact.description" md-maxlength="150" rows="3" md-select-on-focus></textarea>
+      </md-input-container>
+
+      <div class="row">
+        <div class="col span-1-of-3">
+          <label>&nbsp;</label>
+        </div>
+        <div class="col span-2-of-3">
+          <input type="submit"></input>
+        </div>
+      </div>
+    </form>
+  </div>
+</section>

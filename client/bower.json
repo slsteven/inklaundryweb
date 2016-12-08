@@ -1,0 +1,27 @@
+{
+  "name": "client",
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-route": "^1.5.8",
+    "angular": "^1.5.8",
+    "angular-messages": "ng-messages#*",
+    "angular-material": "^1.1.1",
+    "angular-material-data-table": "^0.10.9",
+    "angular-underscore-module": "^1.0.3",
+    "angular-ui-router-styles": "^1.1.0",
+    "angular-css": "^1.0.8"
+  },
+  "devDependencies": {
+    "angular-messages": "^1.5.8"
+  }
+}

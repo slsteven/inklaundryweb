@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html ng-app='app' ui-router-styles>
+  <head>
+    <title>InkLaundry</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+
+    <!-- <base href='/'> -->
+    <!-- Angular Material -->
+    <link rel="stylesheet" href="angular-material/angular-material.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="angular-material-data-table/dist/md-data-table.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="resources/css/styles.css">
+
+    <!-- Google Font -->
+    <link href='https://fonts.googleapis.com/css?family=Lato:400,300,300italic,100italic,100' rel='stylesheet' type='text/css'>
+
+
+    <!-- Angular Bower Components and  dependencies -->
+    <script src='angular/angular.js'></script>
+    <script src='angular-route/angular-route.js'></script>
+    <script src='angular-messages/angular-messages.js'></script>
+    <script src='angular-ui-router/release/angular-ui-router.min.js'></script>
+    <script src='angular-aria/angular-aria.js'></script>
+    <script src='angular-animate/angular-animate.js'></script>
+    <script src='angular-material/angular-material.js'></script>
+    <script src='angular-resource/angular-resource.js'></script>
+    <script src='angular-material-data-table/dist/md-data-table.js'></script>
+    <script src="angular-underscore-module/angular-underscore-module.js"></script>
+    <script src="underscore/underscore.js"></script>
+    <!-- <script src="angular-ui-router-styles/ui-router-styles.js"></script> -->
+    <script src="angular-css/angular-css.min.js"></script>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular-material-icons/0.7.1/angular-material-icons.min.js"></script>
+
+
+    <!-- application code -->
+    <script src='resources/js/app.js'></script>
+    <script src='resources/js/controllers/orders.js'></script>
+    <script src='resources/js/controllers/order.js'></script>
+    <script src='resources/js/controllers/dashboard.js'></script>
+    <script src='resources/js/controllers.js'></script>
+    <script src='resources/js/services.js'></script>
+    <script src='resources/js/directives.js'></script>
+    <script src='resources/js/resources/orders.js'></script>
+    <script src='resources/js/routes.js'></script>
+
+    <script src='resources/js/data/products.js'></script>
+
+  </head>
+  <body layout="column">
+
+
+  <div ui-view="header"></div>
+  <div ui-view="content"></div>
+  <div ui-view="footer"></div>
+  <!-- <div ui-view=""></div> -->
+
+    <!-- Bower angular material -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+    <script>
+      var onresize = function()
+      {
+         var width = window.innerWidth
+         || document.documentElement.clientWidth
+         || document.body.clientWidth;
+         console.log(width);
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,138 @@
+/* big tablets to 1280 (for widths smaller than 1140px row) */
+@media (max-width: 1200px) {
+}
+
+
+/* small tablet to big tablets: from 768 to 1023. */
+@media only screen and (max-width: 1023px) {
+
+  .hero-text-box h1 {
+    font-size: 220%;
+    padding-bottom: 20px;
+  }
+  .hero-text-box h3 {
+    font-size: 145%;
+    padding-bottom: 20px;
+    text-align: center;
+  }
+
+  .hero-text-box div {
+    margin: 0 auto;
+  }
+
+  .steps-box img {
+    width: 70%;
+  }
+
+  .long-copy {
+    line-height: 145%;
+    width: 80%;
+    margin-left: 10%;
+  }
+
+  .item--brand img {
+    margin-left: 15px;
+    margin-right: 15px;
+    margin-bottom: 15px;
+  }
+  .items--product:last-of-type {
+    margin-bottom: 20px;
+  }
+  .items--dialog--btn {
+    padding-bottom: 20px;
+  }
+}
+
+
+
+
+/* small phones to small tablets: from 481 to 767px. */
+@media only screen and (max-width: 767px) {
+
+}
+
+
+
+/* small phones: from 0 to 480px. (ex. iphone 4/5) */
+@media only screen and (max-width: 480px) {
+  .main-nav li {
+    display: inline-block;
+    margin: 0 5px;
+  }
+  .main-nav li a {
+    color: #fff;
+    padding: 8px 0;
+    font-size: 80%;
+  }
+  .hero-text-box {
+    text-align: center;
+  }
+  .hero-text-box h1 {
+    width: 90%;
+    font-size: 150%;
+    padding-bottom: 15px;
+    margin: 0 auto;
+  }
+  .hero-text-box h3 {
+    font-size: 100%;
+    padding-bottom: 20px;
+  }
+  .hero-text-box div {
+    margin: 0 auto;
+  }
+
+
+  .steps-box img {
+    width: 60%;
+    margin: 0 auto;
+  }
+  .steps-box:first-child {
+    margin-top: 10px;
+    text-align: center;
+    padding-right: 0%;
+  }
+  .steps-box:last-child {
+    margin-top: 40px;
+  }
+  .work-steps {
+    margin-bottom: 25px;
+  }
+  .work-steps:last-of-type {
+    margin-bottom: 30px;
+  }
+
+
+
+  .items--product {
+    width: 100%;
+  }
+
+  .items--product img {
+    width: 100%;
+    height: 150px;
+  }
+  .items--product span {
+    font-size: 80%;
+    width: 50%;
+    margin-left: 25%;
+  }
+  .items--brand img {
+    height: auto;
+    width: 50%;
+    margin-bottom: 15px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .plan-box {
+    margin-bottom: 20px;
+  }
+
+
+
+  .callToAction a {
+    margin: 0 10px;
+  }
+
+
+}

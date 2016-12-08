@@ -1,0 +1,74 @@
+<div layout="row" layout-align="center center">
+  <div flex="35" layout="column">
+    <h1>Signup</h1>
+    <form name="userSignupForm" flex layout="column" ng-submit="login(user)">
+      <md-input-container>
+        <label>Name</label>
+        <input type="text" name="name" ng-model="user.name" required></input>
+        <div ng-messages="userSignupForm.name.$error">
+          <div ng-message="required">Your name is required.</div>
+        </div>
+      </md-input-container>
+      <md-input-container>
+        <label>Email</label>
+        <input type="text" name="email" ng-model="user.email" required></input>
+        <div ng-messages="userSignupForm.email.$error">
+          <div ng-message="required">Your name is required.</div>
+        </div>
+      </md-input-container>
+      <md-input-container>
+        <label>Password</label>
+        <input type="password" name="password" ng-model="user.password" required></input>
+        <div ng-messages="userSignupForm.password.$error">
+          <div ng-message="required">Your password is required.</div>
+        </div>
+      </md-input-container>
+      <md-input-container>
+        <label>Password Confirmation</label>
+        <input type="password" name="passwordConfirmation" ng-model="user.passwordConfirmation" required></input>
+        <div ng-messages="userSignupForm.passwordConfirmation.$error">
+          <div ng-message="required">Your name is required.</div>
+        </div>
+      </md-input-container>
+      <md-button class="md-raised md-primary" type="submit" value="Signup">Primary</md-button>
+      <div layout="row" flex>
+        <md-button ng-href="{{googleUrl}}" target="_blank" flex>Login</md-button>
+      </div>
+    </form>
+  </div>
+</div>
+
+
+
+
+<!--
+
+<section>
+  <div class="row">
+    <h2>Singup Page</h2>
+    <form name="userSignupForm" ng-submit="signup(user)">
+      <label>Name</label>
+      <input type="text" name="name" ng-model="user.name" required></input>
+
+      <label>Email:</label>
+      <input type="text" name="email" ng-model="user.email" required></input>
+
+      <label>Password:</label>
+      <input type="password" name="password" ng-model="user.password" required></input>
+
+      <label>Password Confimation:</label>
+      <input type="password" name="password_confirmation" ng-model="user.password_confirmation" pw-check required></input>
+
+      <input type="submit" value="sign up"></input>
+
+      <p ng-show="userSignupForm.password_confirmation.$error.noMatch">Passwords do not match</p>
+      <div ng-show="error">{{ errorMessage }}</div>
+      <div ng-messages="userSignupForm.name.$error">
+        <p ng-message="required">Your name is required.</p>
+      </div>
+    </form>
+  </div>
+</section>
+
+
+ -->
