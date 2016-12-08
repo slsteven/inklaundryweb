@@ -123,12 +123,15 @@
     margin-left: auto;
     margin-right: auto;
   }
+  .items--dialog--content {
+    height: 350px;
+  }
+
+
 
   .plan-box {
     margin-bottom: 20px;
   }
-
-
 
   .callToAction a {
     margin: 0 10px;

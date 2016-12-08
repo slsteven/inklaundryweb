@@ -436,11 +436,14 @@ header {
   /*width: 1000px;*/
 
 }
-
+.items--dialog--toolbar {
+  display: block;
+  width: 100%;
+  padding: 5px;
+  text-align: center;
+}
 .items--dialog--content {
-  height: 450px;
-  padding: 0 15px;
-  /*width: 90%;*/
+  height: 400px;
 }
 
 

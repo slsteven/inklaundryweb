@@ -9,6 +9,7 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
           controller: 'mainController',
           controllerAs: 'mainCtrl',
           templateUrl: 'resources/views/partials/main.html',
+          reloadOnSearch: false
           // css: ['vendors/css/lato.css','vendors/css/normalize.css', 'resources/css/landingPageStyles.css']
         }
       },

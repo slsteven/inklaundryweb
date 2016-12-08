@@ -93,7 +93,8 @@ app.controller('mainController', ['$scope', 'mainService', '$anchorScroll', '$lo
   mainCtrl.showItemsDialog = function() {
     var position = $mdPanel.newPanelPosition()
       .absolute()
-      .center();
+      .center()
+      .top('45%')
     var config = {
       parent: angular.element(document.body),
       controller: 'mainController',
@@ -125,7 +126,6 @@ app.controller('mainController', ['$scope', 'mainService', '$anchorScroll', '$lo
 
   $scope.scrollTo = function (id) {
     $location.hash(id);
-    // $anchorScroll(id);
   };
 
   $scope.newContact = function(submission) {
