@@ -4,7 +4,7 @@
           flex-offset-sm="0" flex-sm="100" layout-align-sm="center"
           flex-offset-xs="0" flex-xs="100" layout-align-xs="center">
       <img src="resources/img/logo-purple.png" class="logo" hide-sm hide-xs>
-      <img src="resources/img/logo-pink.png" class="logo-black" hide-sm>
+      <!-- <img src="resources/img/logo-pink.png" class="logo-black" hide-sm> -->
       <ul class="main-nav" layout="row">
         <li><a ui-sref="gallery">Gallery</a></li>
         <li><a ui-sref="contact">Contact</a></li>
@@ -36,7 +36,7 @@
     <div class="steps-box" flex>
       <div class="work-steps">
         <div>1</div>
-        <p>Design (pick garment and submit artwork)</p>
+        <p>Choose garment and submit design</p>
       </div>
       <div class="work-steps">
         <div>2</div>
@@ -46,8 +46,8 @@
         <div>3</div>
         <p>Give approval for printing!</p>
       </div>
-
-      <a href="#" class="btn-app">Ordering for your school class?</a>
+      <p>We are happy to help! Please contact us for more details.</p>
+      <!-- <a href="#" class="btn-app">Ordering for your school class?</a> -->
       <!-- <a href="#" class="btn-app"><img src="resources/img/download-app-android.png" alt="app store button"></a> -->
     </div>
   </div>
@@ -87,17 +87,18 @@
       </li>
     </ul>
     <div class="items--dialog--btn" hide-md hide-gt-md>
-      <a href="" class="btn btn-ghost dialog--group__open" ng-click="mainCtrl.showItemsDialog($event)">See More</a>
+      <a href="" class="btn btn-ghost dialog--group__open" ng-click="mainCtrl.showItemsDialog($event)">see more</a>
     </div>
   </div>
-  <div class="items--brand" layout="row" flex="70" flex-offset="15"
+  <div class="items--brand" layout="row" layout-padding layout-wrap layout-align="center center"
+       flex="70" flex-offset="15"
        flex-offset-sm="0" flex-sm="100"
        flex-offset-xs="0" flex-xs="100" layout-xs="column">
-    <img src="resources/img/aa.png" alt="American Apparel" flex>
-    <img src="resources/img/next level.jpg" alt="Next Level Apparel" flex>
-    <img src="resources/img/gildan.png" alt="Gildan" flex>
-    <img src="resources/img/independent.jpg" alt="Independent Trading Co." flex>
-    <img src="resources/img/bella_canvas.jpeg" alt="Bella+Canvas" flex>
+    <img src="resources/img/aa.png" alt="American Apparel">
+    <img src="resources/img/next level.jpg" alt="Next Level Apparel">
+    <img src="resources/img/bella_canvas.jpeg" alt="Bella+Canvas">
+    <img src="resources/img/independent.jpg" alt="Independent Trading Co.">
+    <img src="resources/img/gildan.png" alt="Gildan">
   </div>
 
 
@@ -112,21 +113,18 @@
     <div class="box">
       <img src="resources/img/group_icon_thin_1.png" alt="Icon 1">
       <h4>Design group shirt</h4>
-      <!-- <p>Group leader submits design</p> -->
     </div>
     <div class="box">
       <img src="resources/img/group_icon_thin_2.png" alt="Icon 2">
       <h4>Share with group members</h4>
-      <!-- <p>with group members</p> -->
     </div>
     <div class="box">
       <img src="resources/img/group_icon_thin_3.png" alt="Icon 3">
       <h4>Collect sizes online</h4>
-      <!-- <p>sizes and preorders online</p> -->
     </div>
   </div>
   <div class="group--btn">
-    <a href="" class="btn btn-ghost dialog--group__open" ng-click="mainCtrl.showDialog($event)">Learn More</a>
+    <a href="" class="btn btn-ghost dialog--group__open" ng-click="mainCtrl.showDialog($event)">coming soon!</a>
   </div>
 
 </section>
@@ -185,32 +183,29 @@
 </section>
 
 <section class="section--callToAction">
-  <div class="callToAction" layout="row" layout-align="center">
-    <a ui-sref="gallery" class="">Gallery</a>
-    <a ui-sref="contact" class="">Contact/Get a quote</a>
-    <a href="" class="" ng-click="scrollTo('home')">Home</a>
+  <div flex layout="row" layout-align="center" layout-margin layout-xs="column" layout-align-xs="center center">
+    <a class="btn btn-ghost" ui-sref="gallery">Gallery</a>
+    <a class="btn btn-ghost" ui-sref="contact">Contact/Quote</a>
+    <a class="btn btn-ghost" href="" ng-click="scrollTo('home')">Home</a>
   </div>
 </section>
 
 <footer>
-  <div class="row">
-    <div class="col span-1-of-2">
-      <ul class="footer-nav">
-        <li><a href="">About us</a></li>
-        <li><a href="">Blog</a></li>
-        <li><a href="">Press</a></li>
-      </ul>
-    </div>
-    <div class="col span-1-of-2">
-      <ul class="social-links">
-        <li><a href=""><i class="ion-social-facebook">fb</i></a></li>
-        <li><a href=""><i class="ion-social-twitter">twitter</i></a></li>
-        <li><a href=""><i class="ion-social-instagram">Instagram</i></a></li>
-        <li><a href=""><i class="ion-social-google"></i></a></li>
-      </ul>
-    </div>
+  <div layout="row" flex="80" flex-offset="10" layout-align="space-between"
+        flex-xs="100" flex-offset-xs="0" layout-align-xs="space-around">
+    <ul class="footer-nav" layout-xs="column">
+      <li><a href="">About us</a></li>
+      <li><a href="">Blog</a></li>
+      <li><a href="">Press</a></li>
+    </ul>
+    <ul class="social-links" layout-xs="column">
+      <li><a href=""><i class="ion-social-facebook">fb</i></a></li>
+      <li><a href=""><i class="ion-social-twitter">twitter</i></a></li>
+      <li><a href=""><i class="ion-social-instagram">Instagram</i></a></li>
+      <li><a href=""><i class="ion-social-google"></i></a></li>
+    </ul>
   </div>
-  <div class="row">
+  <div layout="row" layout-align="center center">
     <p>Copyright &copy; 2016 Ink Laundry. All rights reserved</p>
   </div>
 </footer>

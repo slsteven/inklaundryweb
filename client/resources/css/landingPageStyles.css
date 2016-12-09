@@ -33,6 +33,8 @@ body {
   font-size: 20px;
   text-rendering: optimizeLegibility;
   overflow-x: hidden;
+  /*overflow-y: scroll;*/
+  -webkit-overflow-scrolling: touch;
 }
 
 .clearfix {zoom: 1}
@@ -584,7 +586,7 @@ header {
 }
 
 .plan-price {
-  font-size: 300%;
+  font-size: 250%;
   margin-bottom: 10px;
   font-weight: 100;
   color: #FF4081;
@@ -617,9 +619,6 @@ header {
 /* ----------------------------------- */
 /* CALL TO ACTION */
 /* ----------------------------------- */
-.callToAction a {
-  margin: 0 25px;
-}
 
 
 /* ----------------------------------- */
@@ -627,8 +626,9 @@ header {
 /* ----------------------------------- */
 footer {
   background-color: #333;
-  padding: 60px;
+  padding: 60px 0;
   font-size: 80%;
+  color: #fff;
 }
 
 .footer-nav {
@@ -658,7 +658,7 @@ footer {
  {
   text-decoration: none;
   border: 0;
-  color: #888;
+  color: #fff;
   -webkit-transition: color 0.2s;
           transition: color 0.2s;
 }
