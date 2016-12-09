@@ -6,7 +6,8 @@ var app = angular.module('app', [
   'md.data.table',
   'underscore',
   'ngMdIcons',
-  'angularCSS'
+  'angularCSS',
+  'ngAnimate'
 ]);
 
 app.config(function($mdThemingProvider) {
