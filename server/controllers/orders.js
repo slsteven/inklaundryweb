@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 var Order    = mongoose.model('Order');
 var fs       = require('fs');
-var dateFormat    = require('dateFormat')
+var dateFormat    = require('dateformat')
 
 
 module.exports = (function() {
