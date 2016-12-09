@@ -6,9 +6,9 @@ var orders = require('../controllers/orders.js');
 
 module.exports = function(app, passport, upload, s3bucket) {
 
-  app.get('/test', isLoggedIn, function(req, res) {
+  app.get('/health', function(req, res) {
     console.log("root route");
-    res.json({root: "home", user: req.user});
+    res.send("healthy")
   });
 
 
