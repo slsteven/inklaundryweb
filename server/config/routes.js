@@ -6,12 +6,6 @@ var orders = require('../controllers/orders.js');
 
 module.exports = function(app, passport, upload, s3bucket) {
 
-  app.get('/health', function(req, res) {
-    console.log("root route");
-    res.send("healthy")
-  });
-
-
   // =====================================
   // SIGNUP ==============================
   // =====================================
