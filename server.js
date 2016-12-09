@@ -25,10 +25,10 @@ var s3bucket = new AWS.S3({params: {Bucket: 'inklaundry'}});
 s3bucket.createBucket();
 
 // mongodb config
-// require('./server/config/mongoose_config.js');
+require('./server/config/mongoose_config.js');
 
 // passport
-// var passport = require('./server/config/passport.js');
+var passport = require('./server/config/passport.js');
 
 app.use(express.static(path.join(root, './client')));
 app.use(express.static(path.join(root, './client/bower_components')));
@@ -43,9 +43,9 @@ app.use(session({
 app.use(cookieParser()); // read cookies (needed for auth)
 
 
-// app.use(passport.initialize()); // initialize passport
-// app.use(passport.session()); // persistent login sessions
-// app.use(flash()); // use connect-flash for flash messages stored in session
+app.use(passport.initialize()); // initialize passport
+app.use(passport.session()); // persistent login sessions
+app.use(flash()); // use connect-flash for flash messages stored in session
 
 // use this to remove # from angular routes
 // app.get('/*', function(req, res){
@@ -55,13 +55,13 @@ app.use(cookieParser()); // read cookies (needed for auth)
 var upload = multer({ dest: './uploads/' })
 
 // routes
-// var routeSetter = require('./server/config/routes.js');
-// routeSetter(app, passport, upload, s3bucket);
+var routeSetter = require('./server/config/routes.js');
+routeSetter(app, passport, upload, s3bucket);
 
 app.get('/health', function(req, res) {
   res.send("healthy")
 });
 
 app.listen(port, function() {
-  console.log("listening on port 3000")
+  console.log("listening on port 8000")
 })

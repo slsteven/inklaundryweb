@@ -19,7 +19,12 @@
     "angular-material-data-table": "^0.10.9",
     "angular-underscore-module": "^1.0.3",
     "angular-ui-router-styles": "^1.1.0",
-    "angular-css": "^1.0.8"
+    "angular-css": "^1.0.8",
+    "angular-animate": "^1.6.0",
+    "angular-aria": "^1.6.0",
+    "angular-resource": "^1.6.0",
+    "angular-ui-router": "^0.3.2",
+    "jquery": "^3.1.1"
   },
   "devDependencies": {
     "angular-messages": "^1.5.8"
