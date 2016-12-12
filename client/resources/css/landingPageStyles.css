@@ -531,7 +531,7 @@ header {
   width: 45%;
 }
 .work-steps {
-  margin-bottom: 50px;
+  margin-bottom: 25px;
 }
 .work-steps div {
   display: inline-block;
@@ -542,13 +542,8 @@ header {
   width: 50px;
   text-align: center;
   vertical-align: top;
-  padding: 5px;
   font-size: 150%;
   margin-right: 15px;
-  float: left;
-}
-.work-steps p {
-  padding-top: 7px;
 }
 
 .work-steps:last-of-type {

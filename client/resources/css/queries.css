@@ -97,6 +97,12 @@
   .work-steps {
     margin-bottom: 25px;
   }
+  .work-steps div {
+    height: 40px;
+    width: 40px;
+    font-size: 135%;
+  }
+
   .work-steps:last-of-type {
     margin-bottom: 30px;
   }
