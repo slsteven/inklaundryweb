@@ -1,12 +1,36 @@
 /* ----------------------------------- *\
+
 TABLE OF CONTENTS
 
-# BSAISC SETUP
+# BASIC SETUP
 
 # RESUABLE COMPONENTS
 
+# HEADINGS
 
+# PARAGPRHS
 
+# ICONS
+
+# LINKS
+
+# IMAGES
+
+# BUTTONS
+
+# HEADER
+
+# SECTION GROUP
+
+# SECTION ITEMS
+
+# SECTION STEPS
+
+# SECTION PLANS
+
+# FOOTER
+
+# CONTACT
 
 
 \* ----------------------------------- */
@@ -450,16 +474,7 @@ header {
   padding: 0;
   clear: both;
   overflow: hidden;
-
 }
-/*
-.gallery-main img {
-  height: 150px;
-  width: auto;
-}
-*/
-
-
 
 .gallery-showcase {
   list-style: none;
@@ -677,3 +692,16 @@ footer p {
 .ion-social-google:hover {
   color: #dd4b39;
 }
+
+
+
+
+
+/* ----------------------------------- */
+/* CONTACT */
+/* ----------------------------------- */
+
+.section-form md-input-container {
+  margin: 5px 0;
+}
+

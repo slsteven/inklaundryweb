@@ -1,49 +1,37 @@
-<h2>dashboard for Admin</h2>
+<div layout="column" layout-margin>
+  <h2>dashboard for Admin | see all orders | see all users | <md-button class="md-accent md-raised" ui-sref="ordersNew">Create customer order</md-button></h2>
+
+  <md-toolbar class="md-table-toolbar md-hue-1">
+    <div class="md-toolbar-tools">
+      <span>All Orders</span>
+    </div>
+  </md-toolbar>
+  <md-table-container>
+    <table md-table>
+      <thead md-head>
+        <tr md-row>
+          <th md-column>Id</th>
+          <th md-column>title</th>
+          <th md-column>Invoice #</th>
+          <th md-column>Brand</th>
+          <th md-column>Model</th>
+          <th md-colunn>Color</th>
+        </tr>
+      </thead>
+      <tbody md-body>
+        <tr md-row md-select-id="name" md-auto-select ng-repeat="order in dashboardCtrl.ordersList">
+          <td md-cell ui-sref='orderDetails({id: order._id})'>{{order._id}}</td>
+          <td md-cell>{{order.title}}</td>
+          <td md-cell>{{order.invoice}}</td>
+          <td md-cell>{{order.apparel_details.brand}}</td>
+          <td md-cell>{{order.apparel_details.model}}</td>
+          <td md-cell>{{order.apparel_details.color}}</td>
+          <tr>
+      </tbody>
+    </table>
+  </md-table-container>
+</div>
 
 
-<h1>See all orders</h1>
 
-<h1>Create a new order</h1>
-<md-button ui-sref="ordersNew">Create new order</md-button>
 
-<h1>see all users</h1>
-
-<li ng-repeat="order in dashboardCtrl.ordersList">{{order}}</li>
-
-<md-list>
-  <md-subheader class="md-no-sticky">Single Action Checkboxes</md-subheader>
-  <md-list-item ng-repeat="order in dashboardCtrl.ordersList">
-    <p> {{ order.title }} </p>
-    <md-checkbox class="md-secondary" ng-model="order.wanted"></md-checkbox>
-  </md-list-item>
-</md-list>
-
-<md-toolbar class="md-table-toolbar md-accent">
-  <div class="md-toolbar-tools">
-    <span>Nutrition</span>
-  </div>
-</md-toolbar>
-<md-table-container>
-  <table md-table>
-    <thead md-head>
-      <tr md-row>
-        <th md-column>Id</th>
-        <th md-column>title</th>
-        <th md-column>Invoice #</th>
-        <th md-column>Brand</th>
-        <th md-column>Model</th>
-        <th md-colunn>Color</th>
-      </tr>
-    </thead>
-    <tbody md-body>
-      <tr md-row md-select-id="name" md-auto-select ng-repeat="order in dashboardCtrl.ordersList">
-        <td md-cell ui-sref='orderDetails({id: order._id})'>{{order._id}}</td>
-        <td md-cell>{{order.title}}</td>
-        <td md-cell>{{order.invoice}}</td>
-        <td md-cell>{{order.apparel_details.brand}}</td>
-        <td md-cell>{{order.apparel_details.model}}</td>
-        <td md-cell>{{order.apparel_details.color}}</td>
-        <tr>
-    </tbody>
-  </table>
-</md-table-container>

@@ -160,11 +160,14 @@ app.controller('mainController', ['$scope', 'mainService', '$anchorScroll', '$lo
 
     $scope.images = [
       {
-        'url': 'resources/img/gallery_img_1.png',
-        'thumbUrl': 'resources/img/gallery_img_1.png'
+        'url': 'resources/img/gallery_img_trans_base.png',
+        'thumbUrl': 'resources/img/gallery_img_base_art.jpg'
       },{
-        'url': 'resources/img/gallery_img_2.png',
-        'thumbUrl': 'resources/img/gallery_img_2.png'
+        'url': 'resources/img/gallery_img_coding_front_shirt.png',
+        'thumbUrl': 'resources/img/gallery_img_coding_front_art.png'
+      },{
+        'url': 'resources/img/gallery_img_3.png',
+        'thumbUrl': 'resources/img/gallery_img_3.png'
       },{
         'url': 'resources/img/gallery_img_3.png',
         'thumbUrl': 'resources/img/gallery_img_3.png'
@@ -206,8 +209,6 @@ app.controller('mainController', ['$scope', 'mainService', '$anchorScroll', '$lo
         'thumbUrl': 'resources/img/gallery_img_15.png'
       },
     ]
-
-
 
 }])
 

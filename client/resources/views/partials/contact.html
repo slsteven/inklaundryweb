@@ -2,10 +2,10 @@
   <a ui-sref="landing">Back</a>
 </div>
 
-<div class="section-form" layout="column" flex="40" flex-offset="30" flex-sm="60" flex-offset-sm="20" flex-xs="100" layout-margin>
+<div class="section-form" layout="column" flex="40" flex-offset="30" flex-sm="100" flex-offset-sm="0" flex-xs="100" flex-offset-xs="0" layout-align="center" layout-padding>
   <h2>Email Us</h2>
   <div ng-show="error">{{ errorMessage }}</div>
-  <form name="contactForm" ng-submit="newContact(contact)" layout="column" flex>
+  <form name="contactForm" ng-submit="newContact(contact)" layout="column">
     <md-input-container>
       <label>Name</label>
       <input type="text" name="name" ng-model="contact.name"></input>
