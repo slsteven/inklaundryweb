@@ -6,15 +6,25 @@
 
     <!-- <base href='/'> -->
     <!-- Angular Material -->
-    <link rel="stylesheet" href="angular-material/angular-material.css">
+    <link href="angular-material/angular-material.css" rel="stylesheet" >
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="angular-material-data-table/dist/md-data-table.min.css" rel="stylesheet">
-
-    <link rel="stylesheet" href="resources/css/styles.css">
+    <link href="ng-image-gallery/dist/ng-image-gallery.css" rel="stylesheet">
+    <link href="resources/css/styles.css" rel="stylesheet" >
 
     <!-- Google Font -->
     <link href='https://fonts.googleapis.com/css?family=Lato:400,300,300italic,100italic,100' rel='stylesheet' type='text/css'>
 
+
+
+  </head>
+  <body layout="column">
+
+
+  <div ui-view="header"></div>
+  <div ui-view="content"></div>
+  <div ui-view="footer"></div>
+  <!-- <div ui-view=""></div> -->
 
     <!-- Angular Bower Components and  dependencies -->
     <script src='angular/angular.js'></script>
@@ -29,7 +39,8 @@
     <script src="angular-underscore-module/angular-underscore-module.js"></script>
     <script src="underscore/underscore.js"></script>
     <script src="angular-css/angular-css.min.js"></script>
-
+    <script src="angular-touch/angular-touch.js"></script>
+    <script src="ng-image-gallery/dist/ng-image-gallery.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/angular-material-icons/0.7.1/angular-material-icons.min.js"></script>
 
 
@@ -38,6 +49,7 @@
     <script src='resources/js/controllers/orders.js'></script>
     <script src='resources/js/controllers/order.js'></script>
     <script src='resources/js/controllers/dashboard.js'></script>
+    <script src='resources/js/controllers/gallery.js'></script>
     <script src='resources/js/controllers.js'></script>
     <script src='resources/js/services.js'></script>
     <script src='resources/js/directives.js'></script>
@@ -46,17 +58,11 @@
 
     <script src='resources/js/data/products.js'></script>
 
-  </head>
-  <body layout="column">
-
-
-  <div ui-view="header"></div>
-  <div ui-view="content"></div>
-  <div ui-view="footer"></div>
-  <!-- <div ui-view=""></div> -->
-
     <!-- Bower angular material -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+
+    <script src="vendors/js/hammer.min.js"></script>
+
     <script>
       var onresize = function()
       {

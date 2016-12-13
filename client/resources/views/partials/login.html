@@ -1,7 +1,7 @@
-<div class="login" layout="row" layout-align="center center">
-  <div layout="column" flex="35">
+<div layout="row" layout-align="center center" layout-margin>
+  <div class="login" layout="column" flex="35" flex-xs="100" layout-align-xs="center center">
     <h1>Login</h1>
-    <form name="loginForm" layout="column" ng-submit="login(user)">
+    <form name="loginForm" layout="column" ng-submit="login(user)" flex>
       <md-input-container>
         <label>Email</label>
         <input type="text" name="email" ng-model="user.email" required></input>
@@ -17,9 +17,9 @@
         </div>
       </md-input-container>
       <md-button class="md-raised md-primary" type="submit">Login</md-button>
-      <div layout="row" flex>
-        <md-button ng-href="{{googleUrl}}" target="_blank" flex>Forgot Password</md-button>
-        <md-button ng-href="{{googleUrl}}" target="_blank" flex>Create Account</md-button>
+      <div layout="row" layout-align="space-around center">
+        <md-button ng-href="{{googleUrl}}" target="_blank">Forgot Password</md-button>
+        <md-button ng-href="{{googleUrl}}" target="_blank">Create Account</md-button>
       </div>
     </form>
   </div>

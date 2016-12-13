@@ -3,7 +3,6 @@
   SETUP
 
 \****************************/
-
 .row {
   max-width: 1140px;
   margin: 0 auto;
@@ -12,7 +11,6 @@
 
 .login {
   height:100vh;
-  width: 100%;
 }
 
 
@@ -111,3 +109,21 @@
   margin-left: auto;
   margin-right: auto;
 }
+
+
+
+
+
+
+/****************************\
+
+  GALLERY
+
+\****************************/
+
+.ng-image-gallery .ng-image-gallery-thumbnails .thumb {
+    width: 150px;
+    height: 150px;
+  }
+
+

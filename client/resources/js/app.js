@@ -7,7 +7,9 @@ var app = angular.module('app', [
   'underscore',
   'ngMdIcons',
   'angularCSS',
-  'ngAnimate'
+  'ngAnimate',
+  'ngTouch',
+  'thatisuday.ng-image-gallery'
 ]);
 
 app.config(function($mdThemingProvider) {
@@ -29,7 +31,6 @@ app.config(function($mdThemingProvider) {
       // 'hue-3': '900'
    });
 });
-
 
 
 app.constant('_', window._)

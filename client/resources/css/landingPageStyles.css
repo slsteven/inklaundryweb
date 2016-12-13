@@ -17,7 +17,6 @@ TABLE OF CONTENTS
 /* ----------------------------------- */
 /* BASIC SETUP*/
 /* ----------------------------------- */
-
 * {
   margin: 0;
   padding: 0;
@@ -56,11 +55,6 @@ body {
 
 .md-dialog-container {
   position: absolute;
-}
-
-md-dialog {
-  max-width: 90%;
-  max-height: 90%;
 }
 
 
@@ -454,20 +448,16 @@ header {
 /* ----------------------------------- */
 .section-gallery {
   padding: 0;
-  clear:both;
+  clear: both;
   overflow: hidden;
 
 }
-
+/*
 .gallery-main img {
-  height: auto;
-  width: 40%;
-}
-
-.gallery-carousel img {
+  height: 150px;
   width: auto;
-  height: 100px;
 }
+*/
 
 
 
