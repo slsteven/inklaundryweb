@@ -17,6 +17,14 @@
 
 
   </head>
+  <body layout="column">
+
+    <div ui-view="header"></div>
+    <div ui-view="content"></div>
+    <div ui-view="footer"></div>
+    <!-- <div ui-view=""></div> -->
+
+  </body>
     <!-- Angular Bower Components and  dependencies -->
     <script src='angular/angular.js'></script>
     <script src='angular-route/angular-route.js'></script>
@@ -71,12 +79,4 @@
         }
 
     </script>
-  <body layout="column">
-
-    <div ui-view="header"></div>
-    <div ui-view="content"></div>
-    <div ui-view="footer"></div>
-    <!-- <div ui-view=""></div> -->
-
-  </body>
 </html>
