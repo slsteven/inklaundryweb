@@ -91,6 +91,19 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
       }
     }
   })
+  .state('summary', {
+    url: '/summary/:id',
+    views: {
+      header: {
+        templateUrl: 'resources/views/partials/header.html'
+      },
+      content: {
+        templateUrl: 'resources/views/partials/grouporder_summary.html',
+        controller: 'groupController',
+        controllerAs: 'groupCtrl'
+      }
+    }
+  })
   .state('orders', {
     url: '/orders',
     templateUrl: 'resources/views/partials/orders.html'

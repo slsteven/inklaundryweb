@@ -9,27 +9,47 @@ var app = angular.module('app', [
   'angularCSS',
   'ngAnimate',
   'ngTouch',
-  'thatisuday.ng-image-gallery'
+  'thatisuday.ng-image-gallery',
+  'ngFileUpload',
+  'ngRoute',
+  'angular.filter'
 ]);
 
+ var customBackground = {
+  '50': '#ffffff',
+  '100': '#ffffff',
+  '200': '#ffffff',
+  '300': '#ffffff',
+  '400': '#ffffff',
+  '500': '#fff',
+  '600': '#f2f2f2',
+  '700': '#e6e6e6',
+  '800': '#d9d9d9',
+  '900': '#cccccc',
+  'A100': '#ffffff',
+  'A200': '#ffffff',
+  'A400': '#ffffff',
+  'A700': '#bfbfbf'
+}
+
 app.config(function($mdThemingProvider) {
+   $mdThemingProvider
+    .definePalette('customBackground', customBackground);
+
   $mdThemingProvider
     .theme('default')
-    .primaryPalette('blue-grey', {
+    .primaryPalette('grey', {
       'default': '500',
-      'hue-1': '100',
-      'hue-2': '700'
+      'hue-1': '300',
+      'hue-2': '800'
     })
     .accentPalette('pink', {
-      // 'default':
+      'default': 'A200'
     })
     .warnPalette('red')
-    .backgroundPalette('grey', {
-      // 'default': 'A200',
-      // 'hue-1': '300',
-      // 'hue-2': '600',
-      // 'hue-3': '900'
-   });
+
+    .backgroundPalette('customBackground')
+
 });
 
 

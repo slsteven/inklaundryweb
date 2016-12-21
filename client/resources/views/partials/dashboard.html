@@ -1,5 +1,5 @@
 <div layout="column" layout-margin>
-  <h2>dashboard for Admin | see all orders | see all users | <md-button class="md-accent md-raised" ui-sref="ordersNew">Create customer order</md-button></h2>
+  <h3>Admin Dashboard |see all orders | see all users | <md-button class="md-accent md-raised" ui-sref="ordersNew">Create customer order</md-button></h3>
 
   <md-toolbar class="md-table-toolbar md-hue-1">
     <div class="md-toolbar-tools">
@@ -15,18 +15,22 @@
           <th md-column>Invoice #</th>
           <th md-column>Brand</th>
           <th md-column>Model</th>
-          <th md-colunn>Color</th>
+          <th md-column>Color</th>
+          <th md-column>Summary</th>
+          <th md-column>Delete</th>
         </tr>
       </thead>
       <tbody md-body>
         <tr md-row md-select-id="name" md-auto-select ng-repeat="order in dashboardCtrl.ordersList">
-          <td md-cell ui-sref='orderDetails({id: order._id})'>{{order._id}}</td>
+          <td md-cell ui-sref='orderDetails({id: order._id})'><md-button class="md-accent">{{order._id}}</md-button></td>
           <td md-cell>{{order.title}}</td>
           <td md-cell>{{order.invoice}}</td>
           <td md-cell>{{order.apparel_details.brand}}</td>
           <td md-cell>{{order.apparel_details.model}}</td>
           <td md-cell>{{order.apparel_details.color}}</td>
-          <tr>
+          <td md-cell><md-button ui-sref="summary({id: order._id})" class="md-accent">Summary</md-button></td>
+          <td md-cell><md-button class="md-accent">Delete</md-button></td>
+        <tr>
       </tbody>
     </table>
   </md-table-container>

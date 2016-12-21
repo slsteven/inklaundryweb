@@ -70,6 +70,7 @@ app.controller('mainController', ['$scope', 'mainService', '$anchorScroll', '$lo
     true
   );
 
+  // disable section--items hover for devices 600px and less
   mainCtrl.windowWidth = $window.innerWidth
 
   if (mainCtrl.windowWidth > 600) {
@@ -89,7 +90,7 @@ app.controller('mainController', ['$scope', 'mainService', '$anchorScroll', '$lo
 
   mainCtrl.dialogItemList = staticItems;
 
-
+  // show dialog to browse items
   mainCtrl.showItemsDialog = function() {
     var position = $mdPanel.newPanelPosition()
       .absolute()
@@ -128,21 +129,20 @@ app.controller('mainController', ['$scope', 'mainService', '$anchorScroll', '$lo
     $location.hash(id);
   };
 
-  $scope.newContact = function(submission) {
-    mainService.sendEmail(submission, function(response){
-      if (response.status === true) {
+  // customer contact form
+  $scope.newContact = function (submission) {
+    mainService.sendEmail(submission, function (response) {
+      if (response.status === 200) {
         $scope.error = true;
-        $scope.contact = {};
-        $scope.errorMessage = response.message;
+        $scope.statusMessage = response.data.message;
       } else {
         $scope.error = true;
-        $scope.errorMessage = response.message
+        $scope.statusMessage = response.data.message
       }
     })
   };
 
-  // GALLERY
-
+  // options for gallery
   $scope.conf = {
       thumbnails  :   true,
       inline      :   false,

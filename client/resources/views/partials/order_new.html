@@ -1,6 +1,6 @@
 <div layout="row" layout-align="center" layout-margin>
-  <div flex="70" layout="column" layout-padding layout-margin md-whiteframe="2">
-    <h1>Create new order form (admin)</h1>
+  <div flex="80" layout="column" layout-padding layout-margin>
+    <h1>create new customer order:</h1>
     <form name="orderNewForm" flex layout="column" ng-submit="ordersCtrl.newOrder(ordersCtrl.order)">
       <!-- Basic student information -->
       <div layout="row" layout-padding>
@@ -115,18 +115,84 @@
 
       <!-- Print locations and dimensions of design-->
 
-      <h3 layout-margin>Print Locations:</h3>
-      <div layout="column">
-        <md-input-container flex="20">
-          <label>Full Front Dimension</label>
-          <input type="text" ng-model="ordersCtrl.order.selectedLoc.fullfront.dimension" placeholder='ex: 5" x 5"'></input>
-        </md-input-container>
-        <input type="file" id="fullFrontMain" ng-model="ordersCtrl.order.selectedLoc.fullfront.artFile" onchange="angular.element(this).scope().imgPreview(event)"></input>
-      </div>
-      <div layout="row">
-        <img ng-src="{{image_source1}}" style="width:100px; height:100px">
-        <button ng-click="ordersCtrl.order.selectedLoc.fullfront.artFile = null" ng-show="image_source">Remove</button>
-      </div>
+      <h3>Print Locations:</h3>
+
+      <md-table-container>
+        <table md-table>
+          <thead md-head>
+            <tr md-row>
+              <!-- <th md-column>View</th> -->
+              <th md-column>Placement</th>
+              <th md-column>Dimension</th>
+              <th md-column>Digital Proof File</th>
+              <th md-column>Art Only File</th>
+            </tr>
+          </thead>
+          <tbody md-body>
+            <tr md-row>
+              <td md-cell>
+                <select name="view" ng-model="ordersCtrl.order.location.front.placement">
+                  <option value="" disabled="disabled">select front placement</option>
+                  <option value="full_front">Full Front</option>
+                  <option value="medium_front">Medium Front</option>
+                  <option value="left_chest">Left Chest</option>
+                  <option value="right_chest">Right Chest</option>
+                </select>
+              </td>
+              <td md-cell>
+                <md-input-container>
+                  <input type="text" ng-model="ordersCtrl.order.location.front.dimension" placeholder='ex: 5" x 5"'></input>
+                </md-input-container>
+              </td>
+              <td md-cell>
+                <md-input-container>
+                  <label>URL</label>
+                  <input type="text" ng-model="ordersCtrl.order.location.front.digitalProof"></input>
+                 </md-input-container>
+              </td>
+              <td md-cell>
+                <md-input-container>
+                  <label>URL</label>
+                  <input type="text" ng-model="ordersCtrl.order.location.front.artOnly"></input>
+                </md-input-container>
+              </td>
+            </tr>
+            <tr md-row>
+              <td md-cell>
+                <select name="view" ng-model="ordersCtrl.order.location.back.placement">
+                  <option value="" disabled="disabled">select back placement</option>
+                  <option value="full_back">Full Back</option>
+                  <option value="medium_back">Medium Back</option>
+                </select>
+              </td>
+              <td md-cell>
+                <md-input-container>
+                  <input type="text" ng-model="ordersCtrl.order.location.back.dimension" placeholder='ex: 5" x 5"'></input>
+                </md-input-container>
+              </td>
+              <td md-cell>
+                <md-input-container>
+                  <label>URL</label>
+                  <input type="text" ng-model="ordersCtrl.order.location.back.digitalProof"></input>
+                </md-input-container>
+              </td>
+              <td md-cell>
+                <md-input-container>
+                  <label>URL</label>
+                  <input type="text" ng-model="ordersCtrl.order.location.back.artOnly"></input>
+                </md-input-container>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </md-table-container>
+
+
+
+
+      <!-- <div layout="row">
+        <!-- <img ng-src="{{image_source1}}" style="width:100px; height:100px"> -->
+        <!-- <button ng-click="ordersCtrl.order.selectedLoc.fullfront.artFile = null" ng-show="image_source">Remove</button> -->
       <!-- <div layout="row" layout-padding>
         <md-input-container flex="20">
           <label>Medium Front Dimension</label>
@@ -288,3 +354,24 @@
   </div>
 </section>
  -->
+
+
+
+
+
+
+<!--
+<input type="file" ngf-select ng-model="picFile" name="file"
+        accept="image/*" ngf-max-size="2MB"
+        ngf-model-invalid="errorFile">
+  <i ng-show="myForm.file.$error.required">*required</i><br>
+  <i ng-show="myForm.file.$error.maxSize">File too large
+    {{errorFile.size / 1000000|number:1}}MB: max 2M</i>
+  <img ng-show="myForm.file.$valid" ngf-thumbnail="picFile" class="thumb"> <button ng-click="picFile = null" ng-show="picFile">Remove</button>
+
+
+
+
+
+ -->
+

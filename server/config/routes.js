@@ -3,6 +3,7 @@ var nodemailer    = require('nodemailer');
 // controllers ===========================
 var users = require('../controllers/users.js');
 var orders = require('../controllers/orders.js');
+var groupOrder = require('../controllers/groupOrder.js');
 
 module.exports = function(app, passport, upload, s3bucket) {
 
@@ -67,12 +68,11 @@ module.exports = function(app, passport, upload, s3bucket) {
   // SEND EMAIL  =========================
   // =====================================
   app.get('/contact/sendemail', function(req, res) {
-    console.log("SERVERSIDE ROUTE CONTACT", req.query);
     var transporter = nodemailer.createTransport({
       service: 'Gmail',
       auth: {
         user: 'inklaundry@gmail.com',
-        pass: 'inklaundry8',
+        pass: process.env.EMAILPASS,
       }
     })
 
@@ -83,12 +83,11 @@ module.exports = function(app, passport, upload, s3bucket) {
       subject: 'Website: ' + req.query.subject, // Subject line
       html:
         '<b>From: </b><p>' + req.query.from + '</p>' +
-        '<b>School: </b><p>' + req.query.school + '</p>' +
-        '<br><p>' + req.query.description + '</p>'
+
+        '<br>Body: </b> <p>' + req.query.description + '</p>'
     };
 
     transporter.sendMail(mailOptions, function(err, info) {
-      console.log("EMIAL RESPONSE", err, info)
       if (err) {
         res.json({
           status: false,
@@ -97,7 +96,7 @@ module.exports = function(app, passport, upload, s3bucket) {
       } else {
         res.json({
           status: true,
-          message: 'success sending email'
+          message: 'Thank you for contacting us. We will reach out to you as soon as possible. Have a great day!'
        })
       }
     })
@@ -107,20 +106,31 @@ module.exports = function(app, passport, upload, s3bucket) {
   // =====================================
   // ORDER ROUTES ========================
   // =====================================
-  app.post('/orders', upload.single('myFile'), function(req, res) {
-    console.log("body", req.body)
-    console.log("file", req.file)
-    orders.new(req, res, s3bucket)
-  });
-  // app.post('/orders', function (req, res) {
-  //   orders.new(req, res);
+  // app.post('/orders', upload.single('myFile'), function(req, res) {
+  //   console.log("body", req.body)
+  //   console.log("file", req.file)
+  //   orders.new(req, res, s3bucket)
   // });
+  app.post('/orders', function (req, res) {
+    console.log("orders route", req.body)
+    orders.create(req, res);
+  });
   app.get('/orders', function (req, res) {
     orders.all(req, res);
-  })
+  });
   app.get('/orders/:id', function (req, res) {
-    orders.get(req, res)
+    orders.get(req, res);
+  });
+
+
+  app.post('/order', function (req, res) {
+    groupOrder.new(req, res);
+  });
+  app.get('/order/summary/:id', function (req, res) {
+    console.log("server routes: summary")
+    groupOrder.summary(req, res);
   })
+
 };
 
 

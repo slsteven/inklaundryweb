@@ -71,7 +71,12 @@ module.exports = (function() {
         price: req.body.price,
         image_url: req.body.imageUrl,
         size_breakdown: req.body.sizeBreakdown,
-        print_locations: req.body.selectedLoc,
+        school_info: {
+          school: req.body.selectedSchool,
+          class: req.body.selectedClass,
+          grade: req.body.selectedGrade
+        },
+        views: req.body.views,
         apparel_details: {
           brand: JSON.parse(req.body.selectedModel)[0],
           model: JSON.parse(req.body.selectedModel)[1],

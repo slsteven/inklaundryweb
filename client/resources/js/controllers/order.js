@@ -1,48 +1,154 @@
-var staticViewPath = {
-  default: "resources/img/locations/CENTER_CHEST.png",
-  fullfront: "resources/img/locations/FULL_FRONT.png",
-  mediumfront: "resources/img/locations/MEDIUM_FRONT.png",
-  centerchest: "resources/img/locations/CENTER_CHEST.png",
-  acrosschest: "resources/img/locations/ACROSS_CHEST.png",
-  mediumback: "resources/img/locations/MEDIUM_BACK.png",
-  lockerpatcharea: "resources/img/locations/LOCKER_PATCH_AREA.png"
+var placementImgPath = {
+  default: "resources/img/locations/center_chest.png",
+  full_front: "resources/img/locations/full_front.png",
+  full_back: "resources/img/locations/full_back.png",
+  left_chest: "resources/img/locations/left_chest.png",
+  medium_front: "resources/img/locations/medium_front.png",
+  center_chest: "resources/img/locations/center_chest.png",
+  across_chest: "resources/img/locations/across_chest.png",
+  medium_back: "resources/img/locations/medium_back.png",
 };
 
-app.controller('orderController', ['$scope', 'orderById',  function ($scope, orderById) {
+app.controller('orderController', ['$scope', 'orderById', 'orderService', '$stateParams',
 
-  var order = this;
+    function ($scope, orderById, orderService, $stateParams) {
 
-  order.orderDetails = orderById;
-  order.currentView = {};
-  order.filtered = {};
-  order.filtered.imageDataList = [];
+      var order = this;
 
-  if (orderById.print_locations !== undefined) {
-    var defaultImage = false;
-    for (var pos in orderById.print_locations) {
-      var imageDetail = orderById.print_locations[pos];
-      // set default image to full front view
-      if (imageDetail.view === 'fullfront') {
-        defaultImage = true;
-        order.currentView.view = imageDetail.view
-        order.currentView.main = imageDetail.artAndApparelFile;
-        order.currentView.sub = imageDetail.artFile;
+      order.orderDetails = orderById;
+
+      order.currentView = {};
+
+      order.viewsData = [];
+
+      // loop through orderById views to setup default image for pageview
+      if (orderById.views !== undefined) {
+        var setDefaultView = false;
+        for (var v in orderById.views) {
+          // add placementImgPath to view object
+          var viewDetails = orderById.views[v];
+          viewDetails['placementImgPath'] = placementImgPath[viewDetails.placement]
+
+          // set default image to full front view
+          if (viewDetails.side === 'front') {
+            setDefaultView = true;
+            viewDetails['default'] = true;
+            order.currentView = orderById.views[v];
+          }
+          order.viewsData.push(viewDetails);
+        }
+        // add default view if full front does not exsit
+        if (!setDefaultView) {
+          var defaultViewDetails = {
+            default: true,
+            placement: 'full_front',
+            side: 'front',
+            artOnly: '',
+            digitalProof: 'resources/img/front_view.jpeg',
+            placementImgPath: 'resources/img/locations/full_front.png',
+          }
+          order.currentView = defaultViewDetails;
+          order.viewsData.push(defaultViewDetails);
+        }
+      }
+
+
+      order.changeView = function (view) {
+        order.currentView = view
       };
-      imageDetail['viewImage'] = staticViewPath[imageDetail.view];
-      order.filtered.imageDataList.push(imageDetail);
+
+      // group order form
+      order.newGroupOrder = function () {
+        order.groupOrder.orderId = $stateParams.id;
+        orderService.new(order.groupOrder, function (data) {
+          console.log("status", data)
+          order.message = true;
+          order.groupOrder = {};
+          //update summary
+          order.groupOrderSummary();
+        });
+      };
+
+
+      console.log("view", orderById)
+
+
+      // temporary hard coded data
+      $scope.images = [
+      {
+        'url': 'resources/img/gallery_img_2.png',
+        'thumbUrl': 'resources/img/gallery_img_1.png'
+      },{
+        'url': 'resources/img/gallery_img_2.png',
+        'thumbUrl': 'resources/img/gallery_img_2.png'
+      },{
+        'url': 'resources/img/gallery_img_3.png',
+        'thumbUrl': 'resources/img/gallery_img_3.png'
+      },{
+        'url': 'resources/img/gallery_img_4.png',
+        'thumbUrl': 'resources/img/gallery_img_4.png'
+      },{
+        'url': 'resources/img/gallery_img_5.png',
+        'thumbUrl': 'resources/img/gallery_img_5.png'
+      }
+    ];
+
+    console.log("controller loaded")
+
+    order.size = {
+      xs: '',
+      s: '',
+      m: '',
+      l: '',
+      xl: '',
+      xxl: ''
     };
-    // add default view if full front does not exsit
-    if (!defaultImage) {
-      order.currentView.main = staticViewPath.fullfront;
-    }
-  }
+    order.changeQty = function (size) {
+      console.log(size)
+      switch(size) {
+        case 'xs':
+          if (order.size.xs === '') {
+            order.size.xs = 1;
+          } else {
+            order.size.xs += 1;
+          }
+          break;
+        case 's':
+          if (order.size.s === '') {
+            order.size.s = 1;
+          } else {
+            order.size.s += 1;
+          }
+          break;
+        case 'm':
+          if (order.size.m === '') {
+            order.size.m = 1;
+          } else {
+            order.size.m += 1;
+          }
+          break;
+        case 'l':
+          if (order.size.l === '') {
+            order.size.l = 1;
+          } else {
+            order.size.l += 1;
+          }
+          break;
+        case 'xl':
+          if (order.size.xl === '') {
+            order.size.xl = 1;
+          } else {
+            order.size.xl += 1;
+          }
+          break;
+        case 'xxl':
+          if (order.size.xxl === '') {
+            order.size.xxl = 1;
+          } else {
+            order.size.xxl += 1;
+          }
+          break;
+      };
+    };
 
-  order.changeView = function (view) {
-    // order.currentView.orderDetails =
-    order.currentView.main = view.artAndApparelFile;
-    order.currentView.sub = view.artFile;
-    order.currentView.view = view.view
-  };
-
-  console.log(order)
 }])

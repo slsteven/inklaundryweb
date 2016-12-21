@@ -16,16 +16,7 @@
     <link href='https://fonts.googleapis.com/css?family=Lato:400,300,300italic,100italic,100' rel='stylesheet' type='text/css'>
 
 
-
   </head>
-  <body layout="column">
-
-
-  <div ui-view="header"></div>
-  <div ui-view="content"></div>
-  <div ui-view="footer"></div>
-  <!-- <div ui-view=""></div> -->
-
     <!-- Angular Bower Components and  dependencies -->
     <script src='angular/angular.js'></script>
     <script src='angular-route/angular-route.js'></script>
@@ -40,7 +31,9 @@
     <script src="underscore/underscore.js"></script>
     <script src="angular-css/angular-css.min.js"></script>
     <script src="angular-touch/angular-touch.js"></script>
+    <script src="angular-filter/dist/angular-filter.min.js"></script>
     <script src="ng-image-gallery/dist/ng-image-gallery.js"></script>
+    <script src="ng-file-upload/ng-file-upload.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/angular-material-icons/0.7.1/angular-material-icons.min.js"></script>
 
 
@@ -50,6 +43,7 @@
     <script src='resources/js/controllers/order.js'></script>
     <script src='resources/js/controllers/dashboard.js'></script>
     <script src='resources/js/controllers/gallery.js'></script>
+    <script src='resources/js/controllers/group.js'></script>
     <script src='resources/js/controllers.js'></script>
     <script src='resources/js/services.js'></script>
     <script src='resources/js/directives.js'></script>
@@ -59,18 +53,30 @@
     <script src='resources/js/data/products.js'></script>
 
     <!-- Bower angular material -->
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.9.1/themes/base/jquery-ui.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 
     <script src="vendors/js/hammer.min.js"></script>
 
     <script>
+
       var onresize = function()
-      {
-         var width = window.innerWidth
-         || document.documentElement.clientWidth
-         || document.body.clientWidth;
-         console.log(width);
-      }
+        {
+           var width = window.innerWidth
+           || document.documentElement.clientWidth
+           || document.body.clientWidth;
+           console.log(width);
+        }
+
     </script>
+  <body layout="column">
+
+    <div ui-view="header"></div>
+    <div ui-view="content"></div>
+    <div ui-view="footer"></div>
+    <!-- <div ui-view=""></div> -->
+
   </body>
 </html>

@@ -4,7 +4,7 @@
 
 <div class="section-form" layout="column" flex="40" flex-offset="30" flex-sm="100" flex-offset-sm="0" flex-xs="100" flex-offset-xs="0" layout-align="center" layout-padding>
   <h2>Email Us</h2>
-  <div ng-show="error">{{ errorMessage }}</div>
+  <div class="md-accent" ng-show="error">{{ statusMessage }}</div>
   <form name="contactForm" ng-submit="newContact(contact)" layout="column">
     <md-input-container>
       <label>Name</label>
@@ -19,10 +19,9 @@
       <input type="text" name="email" ng-model="contact.title"></input>
     </md-input-container>
     <md-input-container>
-      <label>Details</label>
+      <label>Details (optional)</label>
       <textarea ng-model="contact.description" md-maxlength="150" rows="3" md-select-on-focus></textarea>
     </md-input-container>
-
     <input type="submit"></input>
   </form>
 </div>

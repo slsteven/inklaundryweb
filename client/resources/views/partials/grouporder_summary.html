@@ -1,0 +1,30 @@
+<div layout="column" flex="90" layout-align="start start" layout-margin>
+  <h1 class="md-subhead">Admin - Order Summary:</h1>
+  <md-table-container>
+    <table md-table>
+      <thead md-head>
+        <tr md-row>
+          <th md-column>Name</th>
+          <th md-column>Email #</th>
+          <th md-column>Student Id</th>
+          <th md-column>Qty</th>
+          <th md-column>Size</th>
+        </tr>
+      </thead>
+      <tbody md-body>
+        <tr md-row md-select-id="name" md-auto-select ng-repeat="order in groupCtrl.summaryData.data">
+          <td md-cell>{{order.name}}</td>
+          <td md-cell>{{order.email}}</td>
+          <td md-cell>{{order.student_id}}</td>
+          <td md-cell>{{order.quantity}}</td>
+          <td md-cell>{{order.size}}</td>
+          <td md-cell>
+            <md-button class="md-accent">Edit</md-button>
+            <md-button class="md-accent">Delete</md-button>
+          </td>
+          <tr>
+      </tbody>
+    </table>
+  </md-table-container>
+</div>
+

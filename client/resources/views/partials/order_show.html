@@ -1,104 +1,141 @@
-<div class="ordershow" layout="row" layout-xs="column">
-  <!-- LEFT CARD -->
-  <div flex="10" flex-offset="10">
+<div layout="row" layout-align="center">
+  <h1 class="md-display-1 ordershow--header">Group Order Form</h1>
+</div>
+<div class="ordershow" layout="row" layout-margin layout-align="center start" flex>
+  <div layout="row" flex="30">
+    <div class="ordershow--left--sub" layout="column">
+      <img src="resources/img/gallery_img_coding_front_shirt.png">
+      <img src="resources/img/gallery_img_coding_front_shirt.png">
+      <img src="resources/img/gallery_img_coding_front_shirt.png">
+      <img src="resources/img/gallery_img_coding_front_shirt.png">
+    </div>
+    <div class="ordershow--left--main" layout="column" layout-align="start center" flex>
+      <img src="resources/img/gallery_img_coding_front_shirt.png">
+      <a href="{{}}">Questions? Contact group leader</a>
+    </div>
+  </div>
+  <div class="ordershow--right" layout="column" flex="30">
+    <h1 class="md-headline">Heartwarmed Cowl Neck Pullover</h1>
+    <section class="ordershow--price" layout="row" layout-align="start center">
+      <h2 class="md-title">$99.00 </h2>
+      <span class="md-caption">Order #3456789</span>
+      <span class="md-caption">Free Shipping</span>
+    </section>
+    <section class="ordershow--size" layout="row" layout-align="start center" flex>
+      <label class="md-subhead" flex="20">Available Sizes:</label>
+      <div flex>
+        <md-button class="ordershow--size--btn md-accent md-raised" ng-click="orderCtrl.changeQty('xs')">X-Small</md-button>
+        <md-button class="ordershow--size--btn md-accent md-raised" ng-click="orderCtrl.changeQty('s')">Small</md-button>
+        <md-button class="ordershow--size--btn md-accent md-raised" ng-click="orderCtrl.changeQty('m')">Medium</md-button>
+        <md-button class="ordershow--size--btn md-accent md-raised" ng-click="orderCtrl.changeQty('l')">Large</md-button>
+        <md-button class="ordershow--size--btn md-accent md-raised" ng-click="orderCtrl.changeQty('xl')">X-Large</md-button>
+        <md-button class="ordershow--size--btn md-accent md-raised" ng-click="orderCtrl.changeQty('xxl')">XX-Large</md-button>
+      </div>
+    </section>
+
+    <div layout="row" flex-offset="20" layout-align="start center">
+      <ng-md-icon icon="insert_chart" style="fill: #FF4081" size="20"></ng-md-icon>
+      <md-button class="md-primary md-hue-2" target="_blank"><span class="md-caption">size chart</span></md-button>
+    </div>
+
+    <section class="ordershow--qty" layout="row" flex>
+      <label class="md-subhead" flex="20">Qty:</label>
+      <table>
+        <thead>
+          <tr>
+            <th class="md-caption">XS</th>
+            <th class="md-caption">S</th>
+            <th class="md-caption">M</th>
+            <th class="md-caption">L</th>
+            <th class="md-caption">XL</th>
+            <th class="md-caption">XXL</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><input type="number" placeholder="{{orderCtrl.size.xs}}" ng-model="orderCtrl.size.xs"></input></td>
+            <td><input type="number" placeholder="{{orderCtrl.size.s}}" ng-model="orderCtrl.size.s"></input></td>
+            <td><input type="number" placeholder="{{orderCtrl.size.m}}" ng-model="orderCtrl.size.m"></input></td>
+            <td><input type="number" placeholder="{{orderCtrl.size.l}}" ng-model="orderCtrl.size.l"></input></td>
+            <td><input type="number" placeholder="{{orderCtrl.size.xl}}" ng-model="orderCtrl.size.xl"></input></td>
+            <td><input type="number" ng-model="orderCtrl.size.xxl"></input></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="ordershow--color" layout="row" layout-align="start center" flex>
+      <label class="md-subhead" flex="20">Color:</label>
+      <span class="md-body-1">Black</span>
+    </section>
+
+
+    <section layout="column" flex flex-offset="20">
+      <md-input-container class="ordershow--inputs md-accent">
+        <label>Name</label>
+        <input type="text" ng-model="orderCtrl.groupOrder.name">
+      </md-input-container>
+      <md-input-container class="ordershow--inputs md-accent">
+        <label>Email</label>
+        <input type="text" ng-model="orderCtrl.groupOrder.email">
+      </md-input-container>
+      <md-input-container class="ordershow--inputs md-accent">
+        <label>Student ID (optional)</label>
+        <input type="text" ng-model="orderCtrl.groupOrder.studentId">
+      </md-input-container>
+    </section>
+
+    <md-button class="ordershow--submit md-accent md-raised" ng-click="orderCtrl.newGroupOrder()" flex flex-offset="20">Submit</md-button>
+
+    <!-- <form class="ordershow--paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" flex flex-offset="20">
+      <input type="hidden" name="cmd" value="_s-xclick">
+      <input type="hidden" name="hosted_button_id" value="ZURSLQF2TQRPQ">
+      <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+      <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+    </form> -->
+  </div>
+</div>
+
+<div layout="row">
+  <div class="ordershow--details" layout="column" flex="30" flex-offset="50">
+    <div layout="row" layout-align="center center">
+      <ng-md-icon icon="info_outline" style="fill: #FF4081" size="30"></ng-md-icon>
+      <h1 class="md-subhead" flex>Product Details:</h1>
+    </div>
+    <p style="text-align: justify;">Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer ut neque. Vivamus nisi metus, molestie vel, gravida in, condimentum sit amet, nunc. Nam a nibh. Donec suscipit eros. Nam mi. Proin viverra leo ut odio. Curabitur malesuada. Vestibulum a velit eu ante scelerisque vulputate.</p>
+  </div>
+</div>
+
+
+<!-- <div class="ordershow" layout="row" layout-xs="column" layout-align="center">
+  <div flex="10">
     <md-card class="left-card md-hue-1">
       <md-card-header>
         <md-card-header-text layout-align="top center">
-          <span class="md-title">{{orderCtrl.currentView.view | changeViewName}}</span>
+          <span class="md-title">{{orderCtrl.currentView.placement}}</span>
         </md-card-header-text>
       </md-card-header>
 
-      <md-content class="left-card--items" flex layout="column" >
-        <div ng-repeat="data in orderCtrl.filtered.imageDataList">
-          <img ng-src="{{data.viewImage}}" class="md-card-image left-card--locations" alt="{{data.view}}" ng-click="orderCtrl.changeView(data)">
-          <span>{{data.view}}</span>
+      <md-content class="left-card--items" flex layout="column" ng-cloak>
+        <div ng-repeat="data in orderCtrl.viewsData">
+          <img ng-src="{{data.placementImgPath}}" class="md-card-image left-card--locations"  ng-click="orderCtrl.changeView(data)">
+          <span>{{data.placement}}</span>
           <span>{{data.dimension}}</span>
         </div>
-        <!-- <div>
-          <img src="resources/img/locations/MEDIUM_FRONT.png" class="md-card-image left-card--locations" alt="Medium Front">
-          <span>Medium Front</span>
-          <span>8" x 8"</span>
-        </div>
-        <div>
-          <img src="resources/img/locations/CENTER_CHEST.png" class="md-card-image left-card--locations" alt="Center Chest">
-          <span>Center Chest</span>
-          <span>5" x 5"</span>
-        </div>
-        <div>
-          <img src="resources/img/locations/ACROSS_CHEST.png" class="md-card-image left-card--locations" alt="Across Chest">
-          <span>Across Chest</span>
-          <span>4" x 12"</span>
-        </div>
-        <div>
-          <img src="resources/img/locations/RIGHT_CHEST.png" class="md-card-image left-card--locations" alt="Right Chest">
-          <span>Right Chest</span>
-          <span>5" x 5"</span>
-        </div>
-        <div>
-          <img src="resources/img/locations/LEFT_CHEST.png" class="md-card-image" alt="Full Back">
-          <span>Left Chest</span>
-          <span>5" x 5"</span>
-        </div>
-        <div>
-          <img src="resources/img/locations/MEDIUM_BACK.png" class="md-card-image" alt="Medium Back">
-          <span>Medium Back</span>
-          <span>8" x 8"</span>
-        </div>
-        <div>
-          <img src="resources/img/locations/LOCKER_PATCH_AREA.png" class="md-card-image" alt="Locker Patch Area">
-          <span>Locker Patch Area</span>
-          <span>4" x 4"</span>
-        </div>
-        <div>
-          <img src="resources/img/locations/ACROSS_SHOUlDERS.png" class="md-card-image" alt="Across Shoulders">
-          <span>Across Shoulders</span>
-          <span>4" x 14"</span>
-        </div>
-        <div>
-          <img src="resources/img/locations/RIGHT_SLEEVE.png" class="md-card-image" alt="Right Sleeve">
-          <span>Right Sleeve</span>
-          <span>3.5" x 3.5"</span>
-        </div>
-        <div>
-          <img src="resources/img/locations/LEFT_SLEEVE.png" class="md-card-image" alt="Left Sleeve">
-          <span>Left Sleeve</span>
-          <span>3.5" x 3.5"</span>
-        </div>
-        <div>
-          <img src="resources/img/locations/RIGHT_VERTICAL.png" class="md-card-image" alt="Right Vertical">
-          <span>Right Vertical</span>
-          <span>5" x 14"</span>
-        </div>
-        <div>
-          <img src="resources/img/locations/LEFT_VERTICAL.png" class="md-card-image" alt="Left Vertical">
-          <span>Left Vertical</span>
-          <span>5" x 14"</span>
-        </div>
-        <div>
-          <img src="resources/img/locations/FRONT_BOTTOM_RIGHT.png" class="md-card-image" alt="Front Bottom Right">
-          <span>Front Bottom Right</span>
-          <span>5" x 6"</span>
-        </div>
-        <div>
-          <img src="resources/img/locations/FRONT_BOTTOM_LEFT.png" class="md-card-image" alt="Front Bottom Left">
-          <span>Front Bottom Left</span>
-          <span>5" x 6"</span>
-        </div> -->
-
       </md-content>
     </md-card>
   </div>
 
-  <div flex="50">
+  <div flex="40" layout="column" layout-align="center center">
     <md-card class="middle-card" layout-align="top center" layout-padding>
       <md-card-header>
         <md-card-header-text layout-align="center center" flex>
-          <span class="md-title">{{orderCtrl.orderById.title}}</span>
+          <span class="md-title">{{orderCtrl.orderDetails.title}}</span>
           <span class="md-subhead">{{orderCtrl.apparel_detai}} | Sophmores | Class of 2020</span>
           <span class="md-subhead">{{orderCtrl.orderDetails.apparel_details.brand}} | {{orderCtrl.orderDetails.apparel_details.model}} | {{orderCtrl.orderDetails.apparel_details.color}}</span>
         </md-card-header-text>
       </md-card-header>
-      <img ng-src="{{orderCtrl.currentView.main}}" class="middle-card--image md-card-image" alt="image caption">
+      <img src="{{orderCtrl.currentView.digitalProof}}" class="middle-card--image md-card-image" alt="image caption">
     </md-card>
   </div>
 
@@ -111,41 +148,49 @@
           <span class="md-subhead">pay when you pick it up.</span>
         </md-card-header-text>
       </md-card-header>
-      <img ng-src="{{orderCtrl.currentView.sub}}" class="md-card-image right-card--image" alt="No Artwork">
+      <img src="{{orderCtrl.currentView.artOnly}}" class="md-card-image right-card--image" alt="No Artwork">
       <div layout="column">
-        <md-input-container class="right-card--input md-accent">
-          <label>Name</label>
-          <input type="text">
-        </md-input-container>
-        <md-input-container class="right-card--input md-accent">
-          <label>Email</label>
-          <input type="text" required>
-        </md-input-container>
-        <md-input-container class="right-card--input md-accent">
-          <label>Student ID</label>
-          <input type="text" required>
-        </md-input-container>
-        <md-input-container class="right-card--input md-accent">
-          <label>Quantity</label>
-          <input type="number" required>
-        </md-input-container>
-        <md-input-container class="right-card--input md-accent">
-          <label>Size</label>
-          <md-select ng-model="ordersCtrl.preorder.selectedSize" class="md-accent" required>
-            <md-optgroup label="Size" class="md-accent">
-              <md-option value="xsmall">X-Small</md-option>
-              <md-option value="small">Small</md-option>
-              <md-option value="medium">Medium</md-option>
-              <md-option value="xlarge">Large</md-option>
-              <md-option value="xxlarge">XX-Large</md-option>
-              <md-option value="xxxlarge">XXX-Large</md-option>
-            </md-optgroup>
-          </md-select>
-        </md-input-container>
-
-        <md-button class="md-accent md-raised" flex>Submit</md-button>
+        <div ng-show="orderCtrl.message">
+          <p>success</p>
+        </div>
+        <form name="groupOrderForm" ng-submit="orderCtrl.newGroupOrder()" layout="column">
+          <md-input-container class="right-card--input md-accent">
+            <label>Name</label>
+            <input type="text" ng-model="orderCtrl.groupOrder.name">
+          </md-input-container>
+          <md-input-container class="right-card--input md-accent">
+            <label>Email</label>
+            <input type="text" ng-model="orderCtrl.groupOrder.email">
+          </md-input-container>
+          <md-input-container class="right-card--input md-accent">
+            <label>Student ID</label>
+            <input type="text" ng-model="orderCtrl.groupOrder.studentId">
+          </md-input-container>
+          <md-input-container class="right-card--input md-accent">
+            <label>Quantity</label>
+            <input type="number" ng-model="orderCtrl.groupOrder.quantity">
+          </md-input-container>
+          <md-input-container class="right-card--input md-accent">
+            <label>Size</label>
+            <md-select ng-model="orderCtrl.groupOrder.size" class="md-accent">
+                <md-option value="xsmall">X-Small</md-option>
+                <md-option value="small">Small</md-option>
+                <md-option value="medium">Medium</md-option>
+                <md-option value="xlarge">Large</md-option>
+                <md-option value="xxlarge">XX-Large</md-option>
+                <md-option value="xxxlarge">XXX-Large</md-option>
+              </md-optgroup>
+            </md-select>
+          </md-input-container>
+          <md-button type="submit" class="md-accent md-raised" flex>Submit</md-button>
+        </form>
       </div>
     </md-card>
   </div>
-</div>
+</div> -->
 
+<!--
+<ul ng-repeat="order in orderCtrl.summaryData.data">
+  <li>{{order._id}} | {{order.email}} | {{order.size}} | {{order.quantity}}</li>
+</ul>
+ -->

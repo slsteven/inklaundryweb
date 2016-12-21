@@ -2,6 +2,7 @@
 // AUTHORIZATION SERVICE ===============
 // =====================================
 app.service('authService', ['$http', '$q',
+
   function($http, $q) {
 
   // create user variable
@@ -107,7 +108,7 @@ app.service('mainService', ['$http', function ($http) {
       school: email.school
     }
     $http.get('/contact/sendemail', { params: repackEmail })
-      .success(function (resp) {
+      .then(function (resp) {
         callback(resp);
       })
   }
@@ -119,7 +120,6 @@ app.service('mainService', ['$http', function ($http) {
 app.service('multipartFormService', ['$http', '$q', '_', function ($http, $q, _) {
 
   this.upload = function (url, data) {
-    console.log("form", data)
     var imgData = _.pick(data, 'myFile')
 
     var deferred = $q.defer();
@@ -132,8 +132,6 @@ app.service('multipartFormService', ['$http', '$q', '_', function ($http, $q, _)
     for (var key in data) {
       fd.append(key, data[key]);
     }
-
-    console.log("multipartFormService FD", fd)
 
     $http.post(url, fd, {
       transFormRequest: angular.identity,
@@ -159,13 +157,40 @@ app.service('multipartFormService', ['$http', '$q', '_', function ($http, $q, _)
 }])
 
 
-app.service('orderService', ['$http', 'multipartFormService', function ($http, multipartFormService) {
+app.service('ordersService', ['$http', 'multipartFormService',
 
-  this.new = function (data, callback) {
-    multipartFormService.upload().success
-    // $http.post('/orders', data).success(function (data, status) {
-      // callback(status)
-    // })
-  };
+  function ($http, multipartFormService) {
+    // create new customer order
+    this.new = function (data, callback) {
+      $http.post('/orders', data)
+        .then(function (data, status) {
+          console.log("Data", data)
+          console.log("status", status)
+          callback(data)
+        })
+    };
 
+}])
+
+
+app.service('orderService', ['$http',
+
+  function ($http) {
+    // create new group orders based on customer order id
+    this.new = function (data, callback) {
+      console.log("order Service")
+      $http.post('/order', data)
+        .then(function (data, status) {
+          callback(data)
+        })
+    };
+
+    this.summary = function (id, callback) {
+      console.log("client service: summary", id)
+      $http.get('/order/summary/' + id)
+        .then(function (data, status) {
+          console.log("status", status)
+          callback(data);
+        })
+    }
 }])

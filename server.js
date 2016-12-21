@@ -58,9 +58,6 @@ var upload = multer({ dest: './uploads/' })
 var routeSetter = require('./server/config/routes.js');
 routeSetter(app, passport, upload, s3bucket);
 
-app.get('/health', function(req, res) {
-  res.send("healthy")
-});
 
 app.listen(port, function() {
   console.log("listening on port 3000")

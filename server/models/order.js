@@ -9,7 +9,7 @@ var OrderSchema = new Schema({
   school_info: {
     school: String,
     class: String,
-    grade_level: String,
+    grade: String,
   },
   apparel_details: {
     brand: String,
@@ -26,14 +26,10 @@ var OrderSchema = new Schema({
     xxlarge: Number,
     xxxlarge: Number
   },
-  print_locations: [],
-  images: {
-    main_image: String,
-    sub_image: String
-  },
   price: Number,
-  image_url: String,
+  views: [],
   student_emails: [],
+  group_orders:  [{type: Schema.Types.ObjectId, ref: 'GroupOrder'}],
 })
 
 module.exports = mongoose.model('Order', OrderSchema)
