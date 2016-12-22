@@ -1,41 +1,40 @@
-<div layout="column" layout-margin>
-  <h3>Admin Dashboard |see all orders | see all users | <md-button class="md-accent md-raised" ui-sref="ordersNew">Create customer order</md-button></h3>
+<div layout-padding>
+  <div layout="row" flex flex-offset="5">
+    <md-button class="md-accent md-raised" ui-sref="ordersNew">Create customer order</md-button>
+  </div>
 
-  <md-toolbar class="md-table-toolbar md-hue-1">
-    <div class="md-toolbar-tools">
-      <span>All Orders</span>
-    </div>
-  </md-toolbar>
-  <md-table-container>
-    <table md-table>
-      <thead md-head>
-        <tr md-row>
-          <th md-column>Id</th>
-          <th md-column>title</th>
-          <th md-column>Invoice #</th>
-          <th md-column>Brand</th>
-          <th md-column>Model</th>
-          <th md-column>Color</th>
-          <th md-column>Summary</th>
-          <th md-column>Delete</th>
-        </tr>
-      </thead>
-      <tbody md-body>
-        <tr md-row md-select-id="name" md-auto-select ng-repeat="order in dashboardCtrl.ordersList">
-          <td md-cell ui-sref='orderDetails({id: order._id})'><md-button class="md-accent">{{order._id}}</md-button></td>
-          <td md-cell>{{order.title}}</td>
-          <td md-cell>{{order.invoice}}</td>
-          <td md-cell>{{order.apparel_details.brand}}</td>
-          <td md-cell>{{order.apparel_details.model}}</td>
-          <td md-cell>{{order.apparel_details.color}}</td>
-          <td md-cell><md-button ui-sref="summary({id: order._id})" class="md-accent">Summary</md-button></td>
-          <td md-cell><md-button class="md-accent">Delete</md-button></td>
-        <tr>
-      </tbody>
-    </table>
-  </md-table-container>
+  <md-card layout="column" layout-padding flex="90" flex-offset="5">
+    <h1 class="md-title">Orders:</h1>
+    <md-table-container>
+      <table md-table>
+        <thead md-head>
+          <tr md-row>
+            <th md-column>Id</th>
+            <th md-column>title</th>
+            <th md-column>Invoice #</th>
+            <th md-column>Brand</th>
+            <th md-column>Model</th>
+            <th md-column>Color</th>
+            <th md-column>Summary</th>
+            <th md-column>Delete</th>
+          </tr>
+        </thead>
+        <tbody md-body>
+          <tr md-row md-select-id="name" md-auto-select ng-repeat="order in dashboardCtrl.ordersList">
+            <td md-cell ui-sref='orderDetails({id: order._id})'><md-button class="md-accent">{{order._id}}</md-button></td>
+            <td md-cell>{{order.title}}</td>
+            <td md-cell>{{order.invoice}}</td>
+            <td md-cell>{{order.apparel_details.brand}}</td>
+            <td md-cell>{{order.apparel_details.model}}</td>
+            <td md-cell>{{order.apparel_details.color}}</td>
+            <td md-cell><md-button ui-sref="summary({id: order._id})" class="md-accent">Summary</md-button></td>
+            <td md-cell><md-button class="md-accent">Delete</md-button></td>
+          </tr>
+        </tbody>
+      </table>
+    </md-table-container>
+  </md-card>
 </div>
-
 
 
 

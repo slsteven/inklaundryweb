@@ -13,9 +13,9 @@ module.exports = (function () {
         var groupOrder = new GroupOrder({
           name: req.body.name,
           email: req.body.email,
-          quantity: req.body.quantity,
+          total_quantity: req.body.totalQty,
           student_id: req.body.studentId,
-          size: req.body.size,
+          sizes: req.body.sizes,
           _order: req.body.orderId
         })
 

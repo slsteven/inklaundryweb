@@ -1,30 +1,97 @@
-<div layout="column" flex="90" layout-align="start start" layout-margin>
-  <h1 class="md-subhead">Admin - Order Summary:</h1>
-  <md-table-container>
-    <table md-table>
-      <thead md-head>
-        <tr md-row>
-          <th md-column>Name</th>
-          <th md-column>Email #</th>
-          <th md-column>Student Id</th>
-          <th md-column>Qty</th>
-          <th md-column>Size</th>
-        </tr>
-      </thead>
-      <tbody md-body>
-        <tr md-row md-select-id="name" md-auto-select ng-repeat="order in groupCtrl.summaryData.data">
-          <td md-cell>{{order.name}}</td>
-          <td md-cell>{{order.email}}</td>
-          <td md-cell>{{order.student_id}}</td>
-          <td md-cell>{{order.quantity}}</td>
-          <td md-cell>{{order.size}}</td>
-          <td md-cell>
-            <md-button class="md-accent">Edit</md-button>
-            <md-button class="md-accent">Delete</md-button>
-          </td>
-          <tr>
-      </tbody>
-    </table>
-  </md-table-container>
+<div class="sub-nav"layout="row" layout-margin layout-align="end">
+  <a ui-sref="home.dashboard">Back</a>
 </div>
 
+<div layout="row" flex="90" flex-offset="5">
+  <md-card layout-padding flex="40">
+    <h1 class="md-headline">Order Summary</h1>
+    <ul layout-margin>
+      <li class="md-title">Title: <span class="md-subhead">{{groupCtrl.orderDetails.title}}</span></li>
+      <li class="md-title">Invoice: <span class="md-subhead">#{{groupCtrl.orderDetails.invoice}}</span></li>
+      <li class="md-title">Apparel Details:
+        <ul class="md-subhead">
+          <li>Brand: {{groupCtrl.orderDetails.apparel_details.brand}}</li>
+          <li>Color: {{groupCtrl.orderDetails.apparel_details.color}}</li>
+          <li>Model: {{groupCtrl.orderDetails.apparel_details.model}}</li>
+          <li>Style: {{groupCtrl.orderDetails.apparel_details.style}}</li>
+        </ul>
+      </li>
+    </ul>
+  </md-card>
+
+  <md-card layout-padding>
+    <h1 class="md-title">Admin - Group Order Summary:</h1>
+    <md-table-container>
+      <table md-table>
+        <thead md-head>
+          <tr md-row>
+            <th md-column md-numeric>Total Orders</th>
+            <th md-column md-numeric>Total Qty</th>
+            <th md-column md-numeric>XSmall</th>
+            <th md-column md-numeric>Small</th>
+            <th md-column md-numeric>Medium</th>
+            <th md-column md-numeric>Large</th>
+            <th md-column md-numeric>XLarge</th>
+            <th md-column md-numeric>XXLarge</th>
+          </tr>
+        </thead>
+        <tbody md-body>
+          <tr md-row md-select-id="name" md-auto-select>
+            <td md-cell>{{groupCtrl.summaryData.data.length}}</td>
+            <td md-cell>{{groupCtrl.totalQty}}</td>
+            <td md-cell>{{groupCtrl.sizeTotals.xsmall}}</td>
+            <td md-cell>{{groupCtrl.sizeTotals.small}}</td>
+            <td md-cell>{{groupCtrl.sizeTotals.medium}}</td>
+            <td md-cell>{{groupCtrl.sizeTotals.large}}</td>
+            <td md-cell>{{groupCtrl.sizeTotals.xlarge}}</td>
+            <td md-cell>{{groupCtrl.sizeTotals.xxlarge}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </md-table-container>
+  </md-card>
+</div>
+
+<div layout="column" flex="90" flex-offset="5">
+  <md-card layout-padding>
+    <h1 class="md-title">User orders:</h1>
+    <md-table-container flex>
+      <table md-table>
+        <thead md-head>
+          <tr md-row>
+            <th md-column>Name</th>
+            <th md-column>Email #</th>
+            <th md-column>Student Id</th>
+            <th md-column>Total</th>
+            <th md-column>XS</th>
+            <th md-column>S</th>
+            <th md-column>M</th>
+            <th md-column>L</th>
+            <th md-column>XL</th>
+            <th md-column>XXL</th>
+            <th md-column>Paid</th>
+          </tr>
+        </thead>
+        <tbody md-body>
+          <tr md-row md-select-id="name" md-auto-select ng-repeat="order in groupCtrl.summaryData.data">
+            <td md-cell>{{order.name}}</td>
+            <td md-cell>{{order.email}}</td>
+            <td md-cell>{{order.student_id}}</td>
+            <td md-cell>{{order.total_quantity}}</td>
+            <td md-cell>{{order.sizes.xsmall}}</td>
+            <td md-cell>{{order.sizes.small}}</td>
+            <td md-cell>{{order.sizes.medium}}</td>
+            <td md-cell>{{order.sizes.large}}</td>
+            <td md-cell>{{order.sizes.xlarge}}</td>
+            <td md-cell>{{order.sizes.xxlarge}}</td>
+            <td md-cell><md-checkbox></md-checkbox></td>
+            <td md-cell>
+              <md-button class="md-accent">Edit</md-button>
+              <md-button class="md-accent">Delete</md-button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </md-table-container>
+  </md-card>
+</div>

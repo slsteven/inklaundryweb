@@ -3,15 +3,20 @@
 </div>
 <div class="ordershow" layout="row" layout-margin layout-align="center start" flex>
   <div layout="row" flex="30">
-    <div class="ordershow--left--sub" layout="column">
+    <div class="left--sub" layout="column">
       <img src="resources/img/gallery_img_coding_front_shirt.png">
       <img src="resources/img/gallery_img_coding_front_shirt.png">
       <img src="resources/img/gallery_img_coding_front_shirt.png">
       <img src="resources/img/gallery_img_coding_front_shirt.png">
     </div>
-    <div class="ordershow--left--main" layout="column" layout-align="start center" flex>
+    <div class="left--main" layout="column" layout-align="start center">
       <img src="resources/img/gallery_img_coding_front_shirt.png">
-      <a href="{{}}">Questions? Contact group leader</a>
+      <div class="left--main--quest" layout="row" layout-align="center center">
+        <ng-md-icon icon="help_outline" style="fill: #FF4081" size="20"></ng-md-icon>
+        <md-button class="md-primary md-hue-2" ng-href="{{googleUrl}}" target="_blank">
+          <span class="md-caption">Questions? Contact Group</span>
+        </md-button>
+      </div>
     </div>
   </div>
   <div class="ordershow--right" layout="column" flex="30">
@@ -24,12 +29,12 @@
     <section class="ordershow--size" layout="row" layout-align="start center" flex>
       <label class="md-subhead" flex="20">Available Sizes:</label>
       <div flex>
-        <md-button class="ordershow--size--btn md-accent md-raised" ng-click="orderCtrl.changeQty('xs')">X-Small</md-button>
-        <md-button class="ordershow--size--btn md-accent md-raised" ng-click="orderCtrl.changeQty('s')">Small</md-button>
-        <md-button class="ordershow--size--btn md-accent md-raised" ng-click="orderCtrl.changeQty('m')">Medium</md-button>
-        <md-button class="ordershow--size--btn md-accent md-raised" ng-click="orderCtrl.changeQty('l')">Large</md-button>
-        <md-button class="ordershow--size--btn md-accent md-raised" ng-click="orderCtrl.changeQty('xl')">X-Large</md-button>
-        <md-button class="ordershow--size--btn md-accent md-raised" ng-click="orderCtrl.changeQty('xxl')">XX-Large</md-button>
+        <md-button class="ordershow--size--btn md-accent md-raised" ng-click="orderCtrl.changeQty('xsmall')">X-Small</md-button>
+        <md-button class="ordershow--size--btn md-accent md-raised" ng-click="orderCtrl.changeQty('small')">Small</md-button>
+        <md-button class="ordershow--size--btn md-accent md-raised" ng-click="orderCtrl.changeQty('medium')">Medium</md-button>
+        <md-button class="ordershow--size--btn md-accent md-raised" ng-click="orderCtrl.changeQty('large')">Large</md-button>
+        <md-button class="ordershow--size--btn md-accent md-raised" ng-click="orderCtrl.changeQty('xlarge')">X-Large</md-button>
+        <md-button class="ordershow--size--btn md-accent md-raised" ng-click="orderCtrl.changeQty('xxlarge')">XX-Large</md-button>
       </div>
     </section>
 
@@ -53,12 +58,12 @@
         </thead>
         <tbody>
           <tr>
-            <td><input type="number" placeholder="{{orderCtrl.size.xs}}" ng-model="orderCtrl.size.xs"></input></td>
-            <td><input type="number" placeholder="{{orderCtrl.size.s}}" ng-model="orderCtrl.size.s"></input></td>
-            <td><input type="number" placeholder="{{orderCtrl.size.m}}" ng-model="orderCtrl.size.m"></input></td>
-            <td><input type="number" placeholder="{{orderCtrl.size.l}}" ng-model="orderCtrl.size.l"></input></td>
-            <td><input type="number" placeholder="{{orderCtrl.size.xl}}" ng-model="orderCtrl.size.xl"></input></td>
-            <td><input type="number" ng-model="orderCtrl.size.xxl"></input></td>
+            <td><input type="number" placeholder="{{orderCtrl.size.xsmall}}" ng-model="orderCtrl.size.xsmall"></input></td>
+            <td><input type="number" placeholder="{{orderCtrl.size.small}}" ng-model="orderCtrl.size.small"></input></td>
+            <td><input type="number" placeholder="{{orderCtrl.size.medium}}" ng-model="orderCtrl.size.medium"></input></td>
+            <td><input type="number" placeholder="{{orderCtrl.size.large}}" ng-model="orderCtrl.size.large"></input></td>
+            <td><input type="number" placeholder="{{orderCtrl.size.xlarge}}" ng-model="orderCtrl.size.xlarge"></input></td>
+            <td><input type="number" ng-model="orderCtrl.size.xxlarge"></input></td>
           </tr>
         </tbody>
       </table>
@@ -99,7 +104,7 @@
 <div layout="row">
   <div class="ordershow--details" layout="column" flex="30" flex-offset="50">
     <div layout="row" layout-align="center center">
-      <ng-md-icon icon="info_outline" style="fill: #FF4081" size="30"></ng-md-icon>
+      <ng-md-icon icon="details" style="fill: #FF4081" size="25"></ng-md-icon>
       <h1 class="md-subhead" flex>Product Details:</h1>
     </div>
     <p style="text-align: justify;">Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer ut neque. Vivamus nisi metus, molestie vel, gravida in, condimentum sit amet, nunc. Nam a nibh. Donec suscipit eros. Nam mi. Proin viverra leo ut odio. Curabitur malesuada. Vestibulum a velit eu ante scelerisque vulputate.</p>

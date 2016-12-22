@@ -39,16 +39,17 @@ app.config(function($mdThemingProvider) {
   $mdThemingProvider
     .theme('default')
     .primaryPalette('grey', {
-      'default': '500',
-      'hue-1': '300',
-      'hue-2': '800'
+      'default': '50',
+      'hue-1': '100',
+      'hue-2': '500',
+      'hue-3': '900'
     })
     .accentPalette('pink', {
       'default': 'A200'
     })
     .warnPalette('red')
 
-    .backgroundPalette('customBackground')
+    .backgroundPalette('grey')
 
 });
 

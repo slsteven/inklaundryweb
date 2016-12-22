@@ -62,7 +62,7 @@ app.controller('ordersController', ['$scope', 'multipartFormService', '$location
     };
 
     // test data
-    orders.order.title = "testing"
+    // orders.order.title = "testing"
     orders.order.invoice = 1234
     orders.order.selectedSchool = "Silver Creek High School"
     orders.order.selectedClass = 2018

@@ -19,10 +19,18 @@
   HEADER
 
 \****************************/
+
+#header {
+  height: 45px;
+  min-height: 0px;
+}
+
 .header--logo img {
-  height: 20px;
+  height: 35px;
   width: auto;
 }
+
+
 
 /*.main-nav {
   height: 100px;
@@ -161,22 +169,21 @@
   padding: 7px 0;
 }
 
-.ordershow--left--sub img {
+.left--sub img {
   width: 60px;
   height: auto;
   margin: 7px 5px;
 }
 
-.ordershow--left--main img {
+.left--main img {
   width: 380px;
   height: auto;
 }
 
-.ordershow--left--main a {
-  margin-top: 35px;
-  padding: 10px 0;
-  border-bottom: 1px solid #c0c0c0;
+.left--main--quest {
   border-top: 1px solid #c0c0c0;
+  border-bottom: 1px solid #c0c0c0;
+  margin-top: 35px;
 }
 
 .ordershow--right h1 {
@@ -230,10 +237,10 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 
-.ordershow--details {
+/*.ordershow--details {
   border-top: 1px solid #c0c0c0;
   padding-top: 10px;
-}
+}*/
 
 .ordershow--details ng-md-icon {
   margin-right: 10px;

@@ -4,9 +4,16 @@ var Schema = mongoose.Schema;
 var GroupOrderSchema = new Schema({
   name: String,
   email: String,
-  quantity: Number,
+  total_quantity: Number,
   student_id: Number,
-  size: String,
+  sizes: {
+    xsmall: Number,
+    small: Number,
+    medium: Number,
+    large: Number,
+    xlarge: Number,
+    xxlarge: Number
+  },
   _order: {type: Schema.Types.ObjectId, ref: 'Order'},
 })
 

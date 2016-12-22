@@ -23,8 +23,11 @@ app.controller('orderController', ['$scope', 'orderById', 'orderService', '$stat
 
       // loop through orderById views to setup default image for pageview
       if (orderById.views !== undefined) {
+
         var setDefaultView = false;
+
         for (var v in orderById.views) {
+
           // add placementImgPath to view object
           var viewDetails = orderById.views[v];
           viewDetails['placementImgPath'] = placementImgPath[viewDetails.placement]
@@ -37,6 +40,7 @@ app.controller('orderController', ['$scope', 'orderById', 'orderService', '$stat
           }
           order.viewsData.push(viewDetails);
         }
+
         // add default view if full front does not exsit
         if (!setDefaultView) {
           var defaultViewDetails = {
@@ -50,105 +54,122 @@ app.controller('orderController', ['$scope', 'orderById', 'orderService', '$stat
           order.currentView = defaultViewDetails;
           order.viewsData.push(defaultViewDetails);
         }
-      }
-
+      };
 
       order.changeView = function (view) {
-        order.currentView = view
+        order.currentView = view;
       };
 
-      // group order form
-      order.newGroupOrder = function () {
-        order.groupOrder.orderId = $stateParams.id;
-        orderService.new(order.groupOrder, function (data) {
-          console.log("status", data)
-          order.message = true;
-          order.groupOrder = {};
-          //update summary
-          order.groupOrderSummary();
-        });
-      };
-
-
-      console.log("view", orderById)
+      console.log("view", orderById);
 
 
       // temporary hard coded data
       $scope.images = [
-      {
-        'url': 'resources/img/gallery_img_2.png',
-        'thumbUrl': 'resources/img/gallery_img_1.png'
-      },{
-        'url': 'resources/img/gallery_img_2.png',
-        'thumbUrl': 'resources/img/gallery_img_2.png'
-      },{
-        'url': 'resources/img/gallery_img_3.png',
-        'thumbUrl': 'resources/img/gallery_img_3.png'
-      },{
-        'url': 'resources/img/gallery_img_4.png',
-        'thumbUrl': 'resources/img/gallery_img_4.png'
-      },{
-        'url': 'resources/img/gallery_img_5.png',
-        'thumbUrl': 'resources/img/gallery_img_5.png'
-      }
-    ];
+        {
+          'url': 'resources/img/gallery_img_2.png',
+          'thumbUrl': 'resources/img/gallery_img_1.png'
+        },{
+          'url': 'resources/img/gallery_img_2.png',
+          'thumbUrl': 'resources/img/gallery_img_2.png'
+        },{
+          'url': 'resources/img/gallery_img_3.png',
+          'thumbUrl': 'resources/img/gallery_img_3.png'
+        },{
+          'url': 'resources/img/gallery_img_4.png',
+          'thumbUrl': 'resources/img/gallery_img_4.png'
+        },{
+          'url': 'resources/img/gallery_img_5.png',
+          'thumbUrl': 'resources/img/gallery_img_5.png'
+        }
+      ];
 
     console.log("controller loaded")
 
     order.size = {
-      xs: '',
-      s: '',
-      m: '',
-      l: '',
-      xl: '',
-      xxl: ''
+      xsmall: '',
+      small: '',
+      medium: '',
+      large: '',
+      xlarge: '',
+      xxlarge: '',
     };
+
     order.changeQty = function (size) {
-      console.log(size)
       switch(size) {
-        case 'xs':
-          if (order.size.xs === '') {
-            order.size.xs = 1;
+        case 'xsmall':
+          if (order.size.xsmall === '') {
+            order.size.xsmall = 1;
           } else {
-            order.size.xs += 1;
+            order.size.xsmall += 1;
           }
           break;
-        case 's':
-          if (order.size.s === '') {
-            order.size.s = 1;
+        case 'small':
+          if (order.size.small === '') {
+            order.size.small = 1;
           } else {
-            order.size.s += 1;
+            order.size.small += 1;
           }
           break;
-        case 'm':
-          if (order.size.m === '') {
-            order.size.m = 1;
+        case 'medium':
+          if (order.size.medium === '') {
+            order.size.medium = 1;
           } else {
-            order.size.m += 1;
+            order.size.medium += 1;
           }
           break;
-        case 'l':
-          if (order.size.l === '') {
-            order.size.l = 1;
+        case 'large':
+          if (order.size.large === '') {
+            order.size.large = 1;
           } else {
-            order.size.l += 1;
+            order.size.large += 1;
           }
           break;
-        case 'xl':
-          if (order.size.xl === '') {
-            order.size.xl = 1;
+        case 'xlarge':
+          if (order.size.xlarge === '') {
+            order.size.xlarge = 1;
           } else {
-            order.size.xl += 1;
+            order.size.xlarge += 1;
           }
           break;
-        case 'xxl':
-          if (order.size.xxl === '') {
-            order.size.xxl = 1;
+        case 'xxlarge':
+          if (order.size.xxlarge === '') {
+            order.size.xxlarge = 1;
           } else {
-            order.size.xxl += 1;
+            order.size.xxlarge += 1;
           }
           break;
       };
     };
+
+    order.newGroupOrder = function () {
+
+      var newOrder = order.groupOrder;
+
+      newOrder.orderId = $stateParams.id;
+
+      var totalQty = 0;
+      var sizes = {}
+      // replace any empty strings in sizes to 0 and compute sum for total qty
+      for (var s in order.size) {
+        if (order.size[s] === '') {
+          sizes[s] = 0;
+        } else {
+          sizes[s] = order.size[s];
+          totalQty += order.size[s];
+        }
+      };
+      newOrder.totalQty = totalQty;
+
+      newOrder.sizes = sizes;
+
+      orderService.new(newOrder, function (data) {
+        console.log("status", data)
+        // order.message = true;
+        // order.groupOrder = {};
+        // //update summary
+        // order.groupOrderSummary();
+      });
+    }
+
 
 }])

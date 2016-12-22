@@ -100,7 +100,13 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
       content: {
         templateUrl: 'resources/views/partials/grouporder_summary.html',
         controller: 'groupController',
-        controllerAs: 'groupCtrl'
+        controllerAs: 'groupCtrl',
+        resolve: {
+          ordersResource: 'ordersResource',
+          orderById: function (ordersResource, $stateParams) {
+            return ordersResource.get({id: $stateParams.id}).$promise
+          }
+        }
       }
     }
   })
