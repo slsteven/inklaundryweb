@@ -1,7 +1,16 @@
-app.controller('dashboardController', ['$scope', 'ordersList', '$css', function ($scope, ordersList, $css) {
-  var dashboard = this;
+app.controller('dashboardController', ['$scope', 'ordersList', '$css', 'authService',
 
-  $css.removeAll();
+  function ($scope, ordersList, $css, authService) {
 
-  dashboard.ordersList = ordersList;
+    var dashboard = this;
+
+    $css.removeAll();
+
+    dashboard.ordersList = ordersList;
+
+    //get user data
+    authService.getUserStatus()
+      .then(function (data) {
+        console.log("DATA FROM GET USER", data)
+      })
 }])

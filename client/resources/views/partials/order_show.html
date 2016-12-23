@@ -24,7 +24,7 @@
       <span class="md-caption">Free Shipping</span>
     </section>
     <section class="ordershow--size" layout="row" layout-align="start center" flex>
-      <label class="md-subhead" flex="20">Available Sizes:</label>
+      <label class="md-subhead" flex="25">Available Sizes:</label>
       <div flex>
         <md-button class="ordershow--size--btn md-accent md-raised" ng-click="orderCtrl.changeQty('xsmall')">X-Small</md-button>
         <md-button class="ordershow--size--btn md-accent md-raised" ng-click="orderCtrl.changeQty('small')">Small</md-button>
@@ -35,13 +35,13 @@
       </div>
     </section>
 
-    <div layout="row" flex-offset="20" layout-align="start center">
+    <div layout="row" flex-offset="25" layout-align="start center">
       <ng-md-icon icon="insert_chart" style="fill: #FF4081" size="20"></ng-md-icon>
       <md-button class="md-primary md-hue-2" target="_blank"><span class="md-caption">size chart</span></md-button>
     </div>
 
     <section class="ordershow--qty" layout="row" flex>
-      <label class="md-subhead" flex="20">Qty:</label>
+      <label class="md-subhead" flex="25">Qty:</label>
       <table>
         <thead>
           <tr>
@@ -67,12 +67,16 @@
     </section>
 
     <section class="ordershow--color" layout="row" layout-align="start center" flex>
-      <label class="md-subhead" flex="20">Color:</label>
+      <label class="md-subhead" flex="25">Color:</label>
       <span class="md-body-1">{{orderCtrl.orderDetails.apparel_details.color | uppercase}}</span>
     </section>
 
+    <section class="ordershow--color" layout="row" layout-align="start center" flex>
+      <label class="md-subhead" flex="25">Days Left:</label>
+      <span class="md-body-1">10</span>
+    </section>
 
-    <section layout="column" flex flex-offset="20">
+    <section layout="column" flex flex-offset="25">
       <md-input-container class="ordershow--inputs md-accent">
         <label>Name</label>
         <input type="text" ng-model="orderCtrl.groupOrder.name">
@@ -87,7 +91,7 @@
       </md-input-container>
     </section>
 
-    <md-button class="ordershow--submit md-accent md-raised" ng-click="orderCtrl.newGroupOrder()" flex flex-offset="20">Submit</md-button>
+    <md-button class="ordershow--submit md-accent md-raised" ng-click="orderCtrl.newGroupOrder()" flex flex-offset="25">Submit</md-button>
 
     <!-- <form class="ordershow--paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" flex flex-offset="20">
       <input type="hidden" name="cmd" value="_s-xclick">
@@ -107,92 +111,3 @@
     <p style="text-align: justify;">Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer ut neque. Vivamus nisi metus, molestie vel, gravida in, condimentum sit amet, nunc. Nam a nibh. Donec suscipit eros. Nam mi. Proin viverra leo ut odio. Curabitur malesuada. Vestibulum a velit eu ante scelerisque vulputate.</p>
   </div>
 </div>
-
-
-<!-- <div class="ordershow" layout="row" layout-xs="column" layout-align="center">
-  <div flex="10">
-    <md-card class="left-card md-hue-1">
-      <md-card-header>
-        <md-card-header-text layout-align="top center">
-          <span class="md-title">{{orderCtrl.currentView.placement}}</span>
-        </md-card-header-text>
-      </md-card-header>
-
-      <md-content class="left-card--items" flex layout="column" ng-cloak>
-        <div ng-repeat="data in orderCtrl.viewsData">
-          <img ng-src="{{data.placementImgPath}}" class="md-card-image left-card--locations"  ng-click="orderCtrl.changeView(data)">
-          <span>{{data.placement}}</span>
-          <span>{{data.dimension}}</span>
-        </div>
-      </md-content>
-    </md-card>
-  </div>
-
-  <div flex="40" layout="column" layout-align="center center">
-    <md-card class="middle-card" layout-align="top center" layout-padding>
-      <md-card-header>
-        <md-card-header-text layout-align="center center" flex>
-          <span class="md-title">{{orderCtrl.orderDetails.title}}</span>
-          <span class="md-subhead">{{orderCtrl.apparel_detai}} | Sophmores | Class of 2020</span>
-          <span class="md-subhead">{{orderCtrl.orderDetails.apparel_details.brand}} | {{orderCtrl.orderDetails.apparel_details.model}} | {{orderCtrl.orderDetails.apparel_details.color}}</span>
-        </md-card-header-text>
-      </md-card-header>
-      <img src="{{orderCtrl.currentView.digitalProof}}" class="middle-card--image md-card-image" alt="image caption">
-    </md-card>
-  </div>
-
-  <div flex="20">
-    <md-card class="right-card" layout-padding>
-      <md-card-header>
-        <md-card-header-text layout-align="top center">
-          <span class="md-title">${{orderCtrl.orderDetails.price}} - Pre-Order Now</span>
-          <span class="md-subhead">Select your shirt size now and</span>
-          <span class="md-subhead">pay when you pick it up.</span>
-        </md-card-header-text>
-      </md-card-header>
-      <img src="{{orderCtrl.currentView.artOnly}}" class="md-card-image right-card--image" alt="No Artwork">
-      <div layout="column">
-        <div ng-show="orderCtrl.message">
-          <p>success</p>
-        </div>
-        <form name="groupOrderForm" ng-submit="orderCtrl.newGroupOrder()" layout="column">
-          <md-input-container class="right-card--input md-accent">
-            <label>Name</label>
-            <input type="text" ng-model="orderCtrl.groupOrder.name">
-          </md-input-container>
-          <md-input-container class="right-card--input md-accent">
-            <label>Email</label>
-            <input type="text" ng-model="orderCtrl.groupOrder.email">
-          </md-input-container>
-          <md-input-container class="right-card--input md-accent">
-            <label>Student ID</label>
-            <input type="text" ng-model="orderCtrl.groupOrder.studentId">
-          </md-input-container>
-          <md-input-container class="right-card--input md-accent">
-            <label>Quantity</label>
-            <input type="number" ng-model="orderCtrl.groupOrder.quantity">
-          </md-input-container>
-          <md-input-container class="right-card--input md-accent">
-            <label>Size</label>
-            <md-select ng-model="orderCtrl.groupOrder.size" class="md-accent">
-                <md-option value="xsmall">X-Small</md-option>
-                <md-option value="small">Small</md-option>
-                <md-option value="medium">Medium</md-option>
-                <md-option value="xlarge">Large</md-option>
-                <md-option value="xxlarge">XX-Large</md-option>
-                <md-option value="xxxlarge">XXX-Large</md-option>
-              </md-optgroup>
-            </md-select>
-          </md-input-container>
-          <md-button type="submit" class="md-accent md-raised" flex>Submit</md-button>
-        </form>
-      </div>
-    </md-card>
-  </div>
-</div> -->
-
-<!--
-<ul ng-repeat="order in orderCtrl.summaryData.data">
-  <li>{{order._id}} | {{order.email}} | {{order.size}} | {{order.quantity}}</li>
-</ul>
- -->

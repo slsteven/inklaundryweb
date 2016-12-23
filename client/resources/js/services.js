@@ -21,15 +21,15 @@ app.service('authService', ['$http', '$q',
   this.getUserStatus = function() {
     return $http.get('/status') //returns a promise
       // handle success
-      .success(function (data) {
+      .then(function (data) {
+        console.log("Service get user data", data)
         if(data.status){
           user = true;
         } else {
           user = false;
         }
-      })
-      // handle error
-      .error(function (data) {
+      },
+      function (data) {
         user = false;
       });
   }
@@ -64,16 +64,17 @@ app.service('authService', ['$http', '$q',
     var deferred = $q.defer();
 
     $http.post('/login', { email: user.email, password: user.password })
-      .success(function (data, status) {
-        if (status == 200 && data.status) {
+      .then(function (data) {
+        console.log("data", data)
+        if (data.status == 200 && data.data.status) {
           user = true;
-          deferred.resolve();
+          deferred.resolve(data);
         } else {
           user = false;
           deferred.reject();
         }
-      })
-      .error(function (data) {
+      },
+      function (data) {
         user = false;
         deferred.reject(data);
       });
@@ -85,7 +86,7 @@ app.service('authService', ['$http', '$q',
   // =====================================
   this.logout = function (callback) {
     $http.get('/logout')
-      .success(function (resp) {
+      .then(function (resp) {
         user = false;
         callback(resp);
       })

@@ -72,7 +72,9 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
     url: '/home',
     views: {
       header: {
-        templateUrl: 'resources/views/partials/header.html'
+        templateUrl: 'resources/views/partials/header.html',
+        controller: 'authController',
+        controllerAs: 'authCtrl'
       },
       content: {
         templateUrl: 'resources/views/partials/home.html'

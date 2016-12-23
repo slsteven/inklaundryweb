@@ -33,13 +33,13 @@ module.exports = function(app, passport, upload, s3bucket) {
         return res.json({ message: err });
       }
       if (!user) {
-        return res.status(401).json({ err: info.message });
+        return res.json({ err: info.message });
       }
       req.logIn(user, function(err) {
         if (err) {
           res.json({ message: 'could not login user' });
         } else {
-          res.status(200).json({ status: 'login successful', user: user});
+          res.json({ status: 'login successful', user: user});
         }
       });
     })(req, res, next);
@@ -58,6 +58,8 @@ module.exports = function(app, passport, upload, s3bucket) {
   // PERSISTENT USERS ====================
   // =====================================
   app.get('/status', function(req, res) {
+    console.log("server status", req)
+    console.log("server authenticated?", req.isAuthenticated())
     if (!req.isAuthenticated()) {
       return res.status(200).json({ status: false });
     }
@@ -88,8 +90,6 @@ module.exports = function(app, passport, upload, s3bucket) {
     };
 
     transporter.sendMail(mailOptions, function(err, info) {
-      console.log("err", err)
-
       if (err) {
         res.json({
           status: false,

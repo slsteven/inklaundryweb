@@ -3,9 +3,10 @@
     <img src="resources/img/logo-pink.png" hide-xs>
     <span flex></span>
     <a class="md-primary md-hue-2" ui-sref="landing">Home</a>
-    <a class="md-primary md-hue-2" ui-sref="home.dashboard">Dashboard</a>
+    <a class="md-primary md-hue-2" ui-sref="home.dashboard" ng-if="authCtrl.status">Dashboard</a>
     <!-- <md-button ui-sref="signup">Signup</md-button> -->
-    <a class="md-primary md-hue-2" ui-sref="login">Login</a>
+    <a class="md-primary md-hue-2" href="" ng-click="logout()" ng-if="authCtrl.status">logout</a>
+    <a class="md-primary md-hue-2" ui-sref="login" ng-if="!authCtrl.status">Login</a>
   </div>
 </md-toolbar>
 

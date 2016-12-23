@@ -209,12 +209,14 @@
 
 .ordershow--size div {
   border: 1px dashed #c0c0c0;
+  text-align: left;
 }
 .ordershow--size--btn {
   border-radius: 10px 0 0 10px;
   font-size: 11px;
   line-height: 24px;
   min-height: 0px;
+  min-width: 60px;
 }
 
 .ordershow--size--chart {

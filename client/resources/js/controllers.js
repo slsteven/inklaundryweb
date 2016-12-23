@@ -1,5 +1,6 @@
-app.controller('authController', ['$scope', 'authService', '$location', '$css',
-  function($scope, authService, $location, $css) {
+app.controller('authController', ['$scope', 'authService', '$location', '$css', '$state',
+
+  function($scope, authService, $location, $css, $state) {
 
   init();
   // initialize some values
@@ -8,6 +9,14 @@ app.controller('authController', ['$scope', 'authService', '$location', '$css',
   }
 
   $css.removeAll();
+
+  var userStatus = this;
+
+  userStatus.checkStatus =  function () {
+    console.log("Check status")
+    userStatus.status = authService.isLoggedIn();
+  }
+  userStatus.checkStatus();
 
   $scope.signup = function(user) {
     authService.signup(user)
@@ -28,7 +37,7 @@ app.controller('authController', ['$scope', 'authService', '$location', '$css',
       .then(function() {
         $scope.error = false;
         $scope.user = {}; // clear the form
-        $location.path('/dashboard');
+        $state.go('home.dashboard');
       })
       .catch(function(errorMsg) {
         $scope.error = true;
@@ -38,10 +47,12 @@ app.controller('authController', ['$scope', 'authService', '$location', '$css',
   };
 
   $scope.logout = function() {
+    console.log("LOGGING OUT")
     authService.logout(function(response) {
       $location.path('/login');
     })
-  }
+  };
+
 }]);
 
 app.controller('mainController', ['$scope', 'mainService', '$anchorScroll', '$location', '$css', '$mdDialog', '$mdPanel', '$window',  function($scope, mainService, $anchorScroll, $location, $css, $mdDialog, $mdPanel, $window) {
@@ -219,5 +230,17 @@ app.controller('multipartFormController', ['$scope', 'multipartFormService',
 }])
 
 
+app.controller('userStatus', ['$scope', 'authService',
+
+  function ($scope, authService) {
+
+    var userStatus = this;
+
+    userStatus.status = authService.isLoggedIn();
 
 
+    authService.logout(function(response) {
+      $location.path('/login');
+    })
+
+}])
