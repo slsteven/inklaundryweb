@@ -257,3 +257,18 @@ input[type=number]::-webkit-outer-spin-button {
 .ordershow--details ng-md-icon {
   margin-right: 10px;
 }
+
+
+
+
+
+/****************************\
+
+  GROUPORDER SUMMARY PAGE
+
+\****************************/
+
+.summary--table--item {
+  color: #FF4081;
+  font-weight: bold;
+}

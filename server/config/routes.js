@@ -72,7 +72,7 @@ module.exports = function(app, passport, upload, s3bucket) {
       service: 'Gmail',
       auth: {
         user: 'inklaundry@gmail.com',
-        pass: process.env.EMAILPdASS,
+        pass: process.env.EMAILPASS,
       }
     })
 
