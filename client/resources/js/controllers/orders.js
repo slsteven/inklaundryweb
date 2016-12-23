@@ -33,9 +33,9 @@ var staticPrintLocations = {
   'Right': ['Right Sleeve', 'Right Vertical']
 };
 
-app.controller('ordersController', ['$scope', 'multipartFormService', '$location', '$mdDialog', 'ordersService', 'Upload',
+app.controller('ordersController', ['$scope', 'multipartFormService', '$location', '$mdDialog', 'ordersService', 'Upload', '$state',
 
-  function($scope, multipartFormService, $location, $mdDialog, ordersService, Upload) {
+  function($scope, multipartFormService, $location, $mdDialog, ordersService, Upload, $state) {
 
     var orders = this;
 
@@ -62,38 +62,40 @@ app.controller('ordersController', ['$scope', 'multipartFormService', '$location
     };
 
     // test data
-    // orders.order.title = "testing"
+    orders.order.title = "2016 Freshmen - Silver Creek"
     orders.order.invoice = 1234
-    orders.order.selectedSchool = "Silver Creek High School"
-    orders.order.selectedClass = 2018
-    orders.order.selectedGrade = "Freshmen"
     orders.order.location = {}
-    // orders.order.location.front = {}
+    orders.order.price = "12.99"
+    orders.order.groupMessage = "Please place your preorder. you can pick up your order at the front office"
+    orders.order.location.front = {}
     orders.order.location.back = {}
-    // orders.order.location.front.placement = "full_front"
-    // orders.order.location.front.dimension = "5x5"
-    // orders.order.location.front.digitalProof = "https://s3-us-west-1.amazonaws.com/inklaundry/gallery_img_coding_front_shirt.png"
+    orders.order.location.front.placement = "full_front"
+    orders.order.location.front.dimension = "5x5"
+    orders.order.location.front.digitalProof = "https://s3-us-west-1.amazonaws.com/inklaundry/gallery_img_coding_front_shirt.png"
     // orders.order.location.front.artOnly = "https://s3-us-west-1.amazonaws.com/inklaundry/logo_only_sample.png"
     orders.order.location.back.placement = "full_back"
     orders.order.location.back.dimension = "15x15"
     orders.order.location.back.digitalProof = "https://s3-us-west-1.amazonaws.com/inklaundry/gallery_img_slice_front_shirt.png"
-    orders.order.location.back.artOnly = "https://s3-us-west-1.amazonaws.com/inklaundry/gallery_img_slice_art.jpg"
+    // orders.order.location.back.artOnly = "https://s3-us-west-1.amazonaws.com/inklaundry/gallery_img_slice_art.jpg"
 
     orders.newOrder = function() {
       console.log("controller, create order: ", orders.order)
-      // repack  so views is an array of objections without double nested object
+      // repack  so views is an array of objections which indicates side of print
       var viewList = [];
       for (var loc in orders.order.location) {
         orders.order.location[loc]['side'] = loc;
         viewList.push(orders.order.location[loc]);
       };
-      console.log("viewList", viewList)
       orders.order.views = viewList;
       ordersService.new(orders.order, function (data) {
         console.log("data", data)
+        if (data.status === 200) {
+          $state.go('home.dashboard')
+        } else {
+          // error message
+        }
       })
 
-      // multipartFormService.upload('/orders', orders.order)
     }
 
     $scope.showTabDialog = function(ev) {
@@ -140,21 +142,6 @@ app.controller('ordersController', ['$scope', 'multipartFormService', '$location
       }
       reader.readAsDataURL(event.target.files[0]);
     }
-
-  // $scope.newOrder = function() {
-  //   multipartFormService.upload('/order/new', $scope.order)
-  //     .then(function(result) {
-  //       console.log("succcess", result)
-  //     }, function(error) {
-  //       console.log("controller", error)
-  //     }, function(progressComplete) {
-  //       console.log("CLIENT", progressComplete)
-  //       $scope.progress = progressComplete;
-  //     });
-  // };
-
-
-
 }])
 
 

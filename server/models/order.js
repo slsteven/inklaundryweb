@@ -5,7 +5,8 @@ var OrderSchema = new Schema({
   order_Id: Number,
   title: String,
   invoice: String,
-  description: String,
+  group_message: String,
+  group_name: String,
   school_info: {
     school: String,
     class: String,
@@ -26,7 +27,7 @@ var OrderSchema = new Schema({
     xxlarge: Number,
     xxxlarge: Number
   },
-  price: Number,
+  price: String,
   views: [],
   student_emails: [],
   group_orders:  [{type: Schema.Types.ObjectId, ref: 'GroupOrder'}],

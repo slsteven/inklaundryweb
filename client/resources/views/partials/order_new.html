@@ -19,8 +19,24 @@
           </div>
         </md-input-container>
       </div>
-
       <div layout="row" layout-padding>
+        <md-input-container flex>
+          <label>Group name</label>
+          <input type="text" ng-model="ordersCtrl.order.groupTitle" ></input>
+          <div ng-messages="">
+            <div ng-message="required"></div>
+          </div>
+        </md-input-container>
+        <md-input-container flex>
+          <label>Description</label>
+          <input type="text" ng-model="ordersCtrl.order.groupMessage" ></input>
+          <div ng-messages="">
+            <div ng-message="required"></div>
+          </div>
+        </md-input-container>
+      </div>
+
+      <!-- <div layout="row" layout-padding>
         <md-input-container flex>
           <label>School</label>
           <md-select ng-model="ordersCtrl.order.selectedSchool" placeholder="Select school">
@@ -47,7 +63,7 @@
           </md-select>
         </md-input-container>
       </div>
-
+ -->
       <!-- Quantity / size breakdown -->
 
       <h3 layout-margin>Quantity breakdown</h3>
@@ -104,13 +120,13 @@
         </md-input-container>
       </div>
 
-      <md-button class="md-primary md-raised" ng-click="showTabDialog($event)">
+      <md-button class="md-accent md-raised" ng-click="showTabDialog($event)">
         Color Chart - {{ordersCtrl.parsedSelectedModel[1]}}
       </md-button>
 
       <md-input-container layout-margin flex>
-        <label>Describe design specs</label>
-        <textarea ng-model="ordersCtrl.order.description" md-maxlength="150" rows="3" md-select-on-focus></textarea>
+        <label>Group message</label>
+        <textarea ng-model="ordersCtrl.order.groupMessage" md-maxlength="150" rows="3" md-select-on-focus></textarea>
       </md-input-container>
 
       <!-- Print locations and dimensions of design-->
@@ -125,7 +141,6 @@
               <th md-column>Placement</th>
               <th md-column>Dimension</th>
               <th md-column>Digital Proof File</th>
-              <th md-column>Art Only File</th>
             </tr>
           </thead>
           <tbody md-body>
@@ -150,12 +165,12 @@
                   <input type="text" ng-model="ordersCtrl.order.location.front.digitalProof"></input>
                  </md-input-container>
               </td>
-              <td md-cell>
+              <!-- <td md-cell>
                 <md-input-container>
                   <label>URL</label>
                   <input type="text" ng-model="ordersCtrl.order.location.front.artOnly"></input>
                 </md-input-container>
-              </td>
+              </td> -->
             </tr>
             <tr md-row>
               <td md-cell>
@@ -176,12 +191,12 @@
                   <input type="text" ng-model="ordersCtrl.order.location.back.digitalProof"></input>
                 </md-input-container>
               </td>
-              <td md-cell>
+            <!--   <td md-cell>
                 <md-input-container>
                   <label>URL</label>
                   <input type="text" ng-model="ordersCtrl.order.location.back.artOnly"></input>
                 </md-input-container>
-              </td>
+              </td> -->
             </tr>
           </tbody>
         </table>
@@ -281,12 +296,12 @@
 
       <md-input-container flex layout-margin>
         <label>Price</label>
-        <input type="number" ng-model="ordersCtrl.order.price"></input>
+        <input type="text" ng-model="ordersCtrl.order.price"></input>
       </md-input-container>
 
 
-      <label for="input-file-id" class="md-button md-raised">Upload Art Files</label>
-      <input class="ng-hide" id="input-file-id" type="file" multiple accept="image/*" name="file" file-model="ordersCtrl.order.myFile"/>
+     <!--  <label for="input-file-id" class="md-button md-raised">Upload Art Files</label>
+      <input class="ng-hide" id="input-file-id" type="file" multiple accept="image/*" name="file" file-model="ordersCtrl.order.myFile"/> -->
 
       <md-button class="md-raised md-primary" type="submit">Create order</md-button>
     </form>

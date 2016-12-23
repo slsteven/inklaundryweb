@@ -72,7 +72,7 @@ module.exports = function(app, passport, upload, s3bucket) {
       service: 'Gmail',
       auth: {
         user: 'inklaundry@gmail.com',
-        pass: process.env.EMAILPASS,
+        pass: process.env.EMAILPdASS,
       }
     })
 
@@ -88,10 +88,12 @@ module.exports = function(app, passport, upload, s3bucket) {
     };
 
     transporter.sendMail(mailOptions, function(err, info) {
+      console.log("err", err)
+
       if (err) {
         res.json({
           status: false,
-          message: 'failed sending email'
+          message: err.response
         });
       } else {
         res.json({

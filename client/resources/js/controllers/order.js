@@ -19,47 +19,57 @@ app.controller('orderController', ['$scope', 'orderById', 'orderService', '$stat
 
       order.currentView = {};
 
-      order.viewsData = [];
-
-      // loop through orderById views to setup default image for pageview
-      if (orderById.views !== undefined) {
-
-        var setDefaultView = false;
-
-        for (var v in orderById.views) {
-
-          // add placementImgPath to view object
-          var viewDetails = orderById.views[v];
-          viewDetails['placementImgPath'] = placementImgPath[viewDetails.placement]
-
-          // set default image to full front view
-          if (viewDetails.side === 'front') {
-            setDefaultView = true;
-            viewDetails['default'] = true;
-            order.currentView = orderById.views[v];
+      order.setDefaultView = function () {
+        for (view in orderById.views) {
+          console.log(orderById.views[view])
+          if (orderById.views[view].side === 'front') {
+            orderById.views[view].default = true;
+            order.currentView = orderById.views[view]
           }
-          order.viewsData.push(viewDetails);
         }
+      }
 
-        // add default view if full front does not exsit
-        if (!setDefaultView) {
-          var defaultViewDetails = {
-            default: true,
-            placement: 'full_front',
-            side: 'front',
-            artOnly: '',
-            digitalProof: 'resources/img/front_view.jpeg',
-            placementImgPath: 'resources/img/locations/full_front.png',
-          }
-          order.currentView = defaultViewDetails;
-          order.viewsData.push(defaultViewDetails);
-        }
-      };
+      order.setDefaultView();
+      // // loop through orderById views to setup default image for pageview
+      // if (orderById.views !== undefined) {
+
+      //   var setDefaultView = false;
+
+      //   for (var v in orderById.views) {
+
+      //     // add placementImgPath to view object
+      //     var viewDetails = orderById.views[v];
+      //     viewDetails['placementImgPath'] = placementImgPath[viewDetails.placement]
+
+      //     // set default image to full front view
+      //     if (viewDetails.side === 'front') {
+      //       setDefaultView = true;
+      //       viewDetails['default'] = true;
+      //       order.currentView = orderById.views[v];
+      //     }
+      //     order.viewsData.push(viewDetails);
+      //   }
+
+      //   // add default view if full front does not exsit
+      //   if (!setDefaultView) {
+      //     var defaultViewDetails = {
+      //       default: true,
+      //       placement: 'full_front',
+      //       side: 'front',
+      //       artOnly: '',
+      //       digitalProof: 'resources/img/front_view.jpeg',
+      //       placementImgPath: 'resources/img/locations/full_front.png',
+      //     }
+      //     order.currentView = defaultViewDetails;
+      //     order.viewsData.push(defaultViewDetails);
+      //   }
+      // };
 
       order.changeView = function (view) {
+        console.log("CHANGE VIEW", view)
         order.currentView = view;
       };
-
+      console.log("currentView", order.currentView)
       console.log("view", orderById);
 
 
@@ -82,8 +92,6 @@ app.controller('orderController', ['$scope', 'orderById', 'orderService', '$stat
           'thumbUrl': 'resources/img/gallery_img_5.png'
         }
       ];
-
-    console.log("controller loaded")
 
     order.size = {
       xsmall: '',

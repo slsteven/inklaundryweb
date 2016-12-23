@@ -169,9 +169,6 @@ app.controller('mainController', ['$scope', 'mainService', '$anchorScroll', '$lo
         'url': 'resources/img/gallery_img_3.png',
         'thumbUrl': 'resources/img/gallery_img_3.png'
       },{
-        'url': 'resources/img/gallery_img_3.png',
-        'thumbUrl': 'resources/img/gallery_img_3.png'
-      },{
         'url': 'resources/img/gallery_img_4.png',
         'thumbUrl': 'resources/img/gallery_img_4.png'
       },{
