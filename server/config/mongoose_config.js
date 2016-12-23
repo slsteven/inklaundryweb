@@ -8,7 +8,7 @@ process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 if (process.env.NODE_ENV == 'development') {
   mongoose.connect('mongodb://localhost/inklaundry');
 } else {
-  mongoose.connect()
+  // mongoose.connect()
 }
 
 // specify the path to all of the models
