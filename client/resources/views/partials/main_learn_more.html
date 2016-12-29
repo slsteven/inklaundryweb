@@ -1,0 +1,187 @@
+<nav>
+  <div layout="row" layout-align="space-between" flex="80" flex-offset="10"
+        flex-offset-sm="0" flex-sm="100" layout-align-sm="center"
+        flex-offset-xs="0" flex-xs="100" layout-align-xs="center">
+    <img src="resources/img/logo-pink.png" class="logo" hide-sm hide-xs>
+    <!-- <img src="resources/img/logo-pink.png" class="logo-black" hide-sm> -->
+    <ul class="sub-nav" layout="row">
+      <li><a ui-sref="landing">Home</a></li>
+      <li><a ui-sref="gallery">Gallery</a></li>
+      <li><a ui-sref="contact">Contact</a></li>
+      <li><a ui-sref="login">Login</a></li>
+      <!-- <li><a ui-sref="signup">Register</a></li> -->
+      <!-- <li><a ng-click="logout()" ng-if="false">Logout</a></li> -->
+    </ul>
+  </div>
+</nav>
+
+
+<div layout="row" flex="80" flex-offset="10">
+  <div class="learn-more" layout="column" flex>
+    <h2>How it works</h2>
+    <section layout="row">
+      <div layout="column" flex="25">
+        <h3>1. Pick apparel type:</h3>
+      </div>
+      <md-table-container flex flex-offset="10">
+        <table md-table md-row-select>
+          <thead md-head>
+            <tr md-row>
+              <th md-column>Brand</th>
+              <th md-column>Model#</th>
+              <th md-column>Type</th>
+              <th md-column>Price</th>
+              <th md-column>Image</th>
+            </tr>
+          </thead>
+          <tbody md-body>
+            <tr md-row ng-repeat="item in mainCtrl.dialogItemList">
+              <td md-cell>{{item.brand}}</td>
+              <td md-cell><a href="{{item.link}}" target="_blank">{{item.model}}</a></td>
+              <td md-cell>{{item.type}}</td>
+              <td md-cell>{{item.price}}</td>
+              <td md-cell style="width:100px; height: auto;"><img src="resources/img/{{item.resource}}"></td>
+            </tr>
+          </tbody>
+        </table>
+      </md-table-container>
+    </section>
+
+    <section layout="row" class="learn-more--location">
+      <div layout="column" flex="25">
+        <h3>2. Pick location and dimension:</h3>
+        <p>Ability to choose muliple locations and customize dimensions</p>
+      </div>
+      <div layout="row" layout-wrap flex flex-offset="10">
+        <figure>
+          <img src="resources/img/locations/full_front.png">
+          <figcaption>
+            <span class="md-caption">Full Front</span>
+            <span class="md-caption">max 12" x 14"</span>
+            </figcaption>
+        </figure>
+        <figure>
+          <img src="resources/img/locations/medium_front.png">
+          <figcaption>
+            <span class="md-caption">Medium Front</span>
+            <span class="md-caption">8" x 8"</span>
+          </figcaption>
+        </figure>
+        <figure>
+          <img src="resources/img/locations/center_chest.png">
+          <figcaption>
+            <span class="md-caption">Center Chest</span>
+            <span class="md-caption">5" x 5"</span>
+          </figcaption>
+        </figure>
+        <figure>
+          <img src="resources/img/locations/across_chest.png">
+          <figcaption>
+            <span class="md-caption">Across Chest</span>
+            <span class="md-caption">4" x 12"</span>
+          </figcaption>
+        </figure>
+        <figure>
+          <img src="resources/img/locations/front_bottom_left.png">
+          <figcaption>
+            <span class="md-caption">Front Bottom Left</span>
+            <span class="md-caption">5" x 6"</span>
+          </figcaption>
+        </figure>
+        <figure>
+          <img src="resources/img/locations/front_bottom_right.png">
+          <figcaption>
+            <span class="md-caption">Front Bottom Right</span>
+            <span class="md-caption">5" x 6"</span>
+            </figcaption>
+        </figure>
+        <figure>
+          <img src="resources/img/locations/left_chest.png">
+          <figcaption>
+            <span class="md-caption">Left Chest</span>
+            <span class="md-caption">5" x 5"</span>
+          </figcaption>
+        </figure>
+        <figure>
+          <img src="resources/img/locations/right_chest.png">
+          <figcaption>
+            <span class="md-caption">Right Chest</span>
+            <span class="md-caption">5" x 5"</span>
+          </figcaption>
+       </figure>
+        <figure>
+          <img src="resources/img/locations/left_vertical.png">
+          <figcaption>
+            <span class="md-caption">Left Vertical</span>
+            <span class="md-caption">4" x 12"</span>
+          </figcaption>
+        </figure>
+        <figure>
+          <img src="resources/img/locations/right_vertical.png">
+          <figcaption>
+            <span class="md-caption">Right Vertical</span>
+            <span class="md-caption">4" x 12"</span>
+            </figcaption>
+        </figure>
+        <figure>
+          <img src="resources/img/locations/across_shoulders.png">
+          <figcaption>
+            <span class="md-caption">Across Shoulders</span>
+            <span class="md-caption">4" x 14"</span>
+          </figcaption>
+        </figure>
+        <figure>
+          <img src="resources/img/locations/full_back.png">
+          <figcaption>
+            <span class="md-caption">Full Back</span>
+            <span class="md-caption">max 12" x 14"</span>
+          </figcaption>
+        </figure>
+        <figure>
+          <img src="resources/img/locations/medium_back.png">
+          <figcaption>
+            <span class="md-caption">Medium Back</span>
+            <span class="md-caption">8" x 8"</span>
+          </figcaption>
+        </figure>
+        <figure>
+          <img src="resources/img/locations/locker_patch_area.png">
+          <figcaption>
+            <span class="md-caption">Locker Patch Area</span>
+            <span class="md-caption">4" x 4"</span>
+          </figcaption>
+        </figure>
+        <figure>
+          <img src="resources/img/locations/left_sleeve.png">
+          <figcaption>
+            <span class="md-caption">Left Sleeve</span>
+            <span class="md-caption">3.5" x 3.5"</span>
+          </figcaption>
+        </figure>
+        <figure>
+          <img src="resources/img/locations/right_sleeve.png">
+          <figcaption>
+            <span class="md-caption">Right Sleeve</span>
+            <span class="md-caption">3.5" x 3.5"</span>
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section layout="row" class="learn-more--complete">
+      <div layout="column" flex="25">
+        <h3>3. Finished: </h3>
+        <p>Contact us and we will walk you through step by step to get the process going!</p>
+      </div>
+      <div flex flex-offset="10">
+        <a class="md-accent" ui-sref="contact">Submit design</a>
+        <ng-md-icon icon="arrow_forward" style="fill: #FF4081" size="20"></ng-md-icon>
+        <span>Recieve quote and digital proof</span>
+        <ng-md-icon icon="arrow_forward" style="fill: #FF4081" size="20"></ng-md-icon>
+        <span>Give approval</span>
+      </div>
+    </section>
+
+  </div>
+</div>
+

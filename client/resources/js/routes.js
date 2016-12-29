@@ -1,5 +1,6 @@
 
 app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
+
   $stateProvider
 
   .state('landing', {
@@ -20,15 +21,25 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
         }
       ]
   })
+  .state('learn_more', {
+    url: '/learn_more',
+    views: {
+      content: {
+        templateUrl: 'resources/views/partials/main_learn_more.html',
+        controller: 'mainController',
+        controllerAs: 'mainCtrl'
+      }
+    }
+  })
   .state('contact', {
     url: '/contact',
-      views: {
-        content: {
-          templateUrl: 'resources/views/partials/contact.html',
-          controller: 'mainController',
-          controllerAs: 'mainCtrl'
-        }
+    views: {
+      content: {
+        templateUrl: 'resources/views/partials/contact.html',
+        controller: 'mainController',
+        controllerAs: 'mainCtrl',
       }
+    }
   })
   .state('gallery', {
     url: '/gallery',
@@ -50,7 +61,6 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
         templateUrl: 'resources/views/partials/login.html',
         controller: 'authController',
         controllerAs: 'authCtrl',
-        access: { restricted: false },
       },
     }
   })
@@ -79,6 +89,9 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
       content: {
         templateUrl: 'resources/views/partials/home.html'
       }
+    },
+    resolve: {
+      access: ['authService', function (authService) { return authService.isLoggedIn(); }],
     }
   })
   .state('home.dashboard', {
@@ -90,43 +103,29 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
       ordersResource: 'ordersResource',
       ordersList: function (ordersResource) {
         return ordersResource.query().$promise;
-      }
+      },
+      access: ['authService', function (authService) { return authService.isLoggedIn(); }],
     }
   })
-  .state('summary', {
+  .state('home.summary', {
     url: '/summary/:id',
-    views: {
-      header: {
-        templateUrl: 'resources/views/partials/header.html'
-      },
-      content: {
-        templateUrl: 'resources/views/partials/grouporder_summary.html',
-        controller: 'groupController',
-        controllerAs: 'groupCtrl',
-        resolve: {
-          ordersResource: 'ordersResource',
-          orderById: function (ordersResource, $stateParams) {
-            return ordersResource.get({id: $stateParams.id}).$promise
-          }
-        }
+    templateUrl: 'resources/views/partials/grouporder_summary.html',
+    controller: 'groupController',
+    controllerAs: 'groupCtrl',
+    resolve: {
+      ordersResource: 'ordersResource',
+      orderById: function (ordersResource, $stateParams) {
+        return ordersResource.get({id: $stateParams.id}).$promise
       }
     }
   })
-  .state('orders', {
-    url: '/orders',
-    templateUrl: 'resources/views/partials/orders.html'
-  })
-  .state('ordersNew', {
+  .state('home.ordersNew', {
     url: '/orders/new',
-    views: {
-      header: {
-        templateUrl: 'resources/views/partials/header.html'
-      },
-      content: {
-        templateUrl: 'resources/views/partials/order_new.html',
-        controller: 'ordersController',
-        controllerAs: 'ordersCtrl'
-      }
+    templateUrl: 'resources/views/partials/order_new.html',
+    controller: 'ordersController',
+    controllerAs: 'ordersCtrl',
+    resolve: {
+      access: ['authService', function (authService) { return authService.isLoggedIn(); }],
     }
   })
   .state('orderDetails', {

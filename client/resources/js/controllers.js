@@ -10,13 +10,11 @@ app.controller('authController', ['$scope', 'authService', '$location', '$css', 
 
   $css.removeAll();
 
-  var userStatus = this;
+  var auth = this;
 
-  userStatus.checkStatus =  function () {
-    console.log("Check status")
-    userStatus.status = authService.isLoggedIn();
-  }
-  userStatus.checkStatus();
+  auth.userProfile = authService.userProfile;
+
+  auth.user = authService.user;
 
   $scope.signup = function(user) {
     authService.signup(user)
@@ -47,9 +45,8 @@ app.controller('authController', ['$scope', 'authService', '$location', '$css', 
   };
 
   $scope.logout = function() {
-    console.log("LOGGING OUT")
     authService.logout(function(response) {
-      $location.path('/login');
+      $state.go('login');
     })
   };
 
@@ -227,20 +224,4 @@ app.controller('multipartFormController', ['$scope', 'multipartFormService',
     var file = $scope.order.file;
     multipartFormService.upload('/order/new', file)
   };
-}])
-
-
-app.controller('userStatus', ['$scope', 'authService',
-
-  function ($scope, authService) {
-
-    var userStatus = this;
-
-    userStatus.status = authService.isLoggedIn();
-
-
-    authService.logout(function(response) {
-      $location.path('/login');
-    })
-
 }])

@@ -2,11 +2,12 @@
   <div class="md-toolbar-tools header--logo" layout="row" sticky-text flex>
     <img src="resources/img/logo-pink.png" hide-xs>
     <span flex></span>
-    <a class="md-primary md-hue-2" ui-sref="landing">Home</a>
-    <a class="md-primary md-hue-2" ui-sref="home.dashboard" ng-if="authCtrl.status">Dashboard</a>
+    <a class="md-primary md-hue-2" ui-sref="home.dashboard" ng-if="authCtrl.user">Dashboard</a>
     <!-- <md-button ui-sref="signup">Signup</md-button> -->
-    <a class="md-primary md-hue-2" href="" ng-click="logout()" ng-if="authCtrl.status">logout</a>
-    <a class="md-primary md-hue-2" ui-sref="login" ng-if="!authCtrl.status">Login</a>
+    <a class="md-primary md-hue-2" href="" ng-click="logout()" ng-if="authCtrl.user">logout</a>
+    <a class="md-primary md-hue-2" ui-sref="login" ng-if="!authCtrl.user">Login</a>
   </div>
 </md-toolbar>
-
+<div layout="row" flex-offset="10">
+  <span class="md-caption" ng-if="authCtrl.user">Loggin in user: {{authCtrl.userProfile.local.email}}</span>
+</div>

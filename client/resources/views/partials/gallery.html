@@ -1,6 +1,19 @@
-<div class="sub-nav"layout="row" layout-margin layout-align="end">
-  <a ui-sref="landing">Back</a>
-</div>
+<nav>
+  <div layout="row" layout-align="space-between" flex="80" flex-offset="10"
+        flex-offset-sm="0" flex-sm="100" layout-align-sm="center"
+        flex-offset-xs="0" flex-xs="100" layout-align-xs="center">
+    <img src="resources/img/logo-pink.png" class="logo" hide-sm hide-xs>
+    <!-- <img src="resources/img/logo-pink.png" class="logo-black" hide-sm> -->
+    <ul class="sub-nav" layout="row">
+      <li><a ui-sref="landing">Home</a></li>
+      <li><a ui-sref="learn_more">Learn More</a></li>
+      <li><a ui-sref="contact">Contact</a></li>
+      <li><a ui-sref="login">Login</a></li>
+      <!-- <li><a ui-sref="signup">Register</a></li> -->
+      <!-- <li><a ng-click="logout()" ng-if="false">Logout</a></li> -->
+    </ul>
+  </div>
+</nav>
 
 <div class="row">
   <h2>Gallery</h2>

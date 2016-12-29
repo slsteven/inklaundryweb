@@ -1,6 +1,7 @@
 <div layout-padding>
+  <span class="md-caption">User: {{dashboardCtrl.user.email}}</span>
   <div layout="row" flex flex-offset="5">
-    <md-button class="md-accent md-raised" ui-sref="ordersNew">Create customer order</md-button>
+    <md-button class="md-accent md-raised" ui-sref="home.ordersNew">Create customer order</md-button>
   </div>
 
   <md-card layout="column" layout-padding flex="90" flex-offset="5">
@@ -27,7 +28,7 @@
             <td md-cell>{{order.apparel_details.brand}}</td>
             <td md-cell>{{order.apparel_details.model}}</td>
             <td md-cell>{{order.apparel_details.color}}</td>
-            <td md-cell><md-button ui-sref="summary({id: order._id})" class="md-accent">Summary</md-button></td>
+            <td md-cell><md-button ui-sref="home.summary({id: order._id})" class="md-accent">Summary</md-button></td>
             <td md-cell><md-button class="md-accent">Delete</md-button></td>
           </tr>
         </tbody>

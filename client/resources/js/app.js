@@ -60,6 +60,23 @@ app.run(function ($rootScope) {
    $rootScope._ = window._;
 });
 
+app.run(['$rootScope', 'authService', '$location', '$state',
+
+  function($rootScope, authService, $location, $state) {
+
+    $rootScope.$on('$stateChangeError', function (event, toState, toParams, fromState, fromParams, error) {
+      console.log("state change error", error)
+      if (error === false) {
+        console.log("DENY")
+        $state.go('login');
+      } else {
+        console.log("AUTHORIZED")
+      }
+    })
+
+}])
+
+
 // give the directive a name, pass in a function that returns an object. The object
 // is the custom directive
 app.directive('searchResult', function() {

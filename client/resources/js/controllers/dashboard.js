@@ -9,8 +9,5 @@ app.controller('dashboardController', ['$scope', 'ordersList', '$css', 'authServ
     dashboard.ordersList = ordersList;
 
     //get user data
-    authService.getUserStatus()
-      .then(function (data) {
-        console.log("DATA FROM GET USER", data)
-      })
+    dashboard.user = authService.userProfile.local;
 }])

@@ -139,9 +139,9 @@ h4 {
 /* -------------PARAGRAPHS---------*/
 
 .long-copy {
+  text-align: center;
   line-height: 145%;
-  width: 50%;
-  margin-left: 25%;
+  width: 40%;
 }
 
 .box p {
@@ -285,6 +285,15 @@ header {
   margin-top: 5px 0;
 }
 
+/* REFERRAL BOX */
+.referral-box h3 {
+  border: 1px dashed;
+  word-spacing: 3px;
+  margin: 0;
+  color: #fff;
+  padding: 10px;
+}
+
 /* MAIN NAVI */
 
 .main-nav {
@@ -314,9 +323,33 @@ header {
   border-bottom: 2px solid #FF4081;
 }
 
-.sub-nav a {
-  margin-right: 25px;
+
+.sub-nav {
+  list-style: none;
+  margin-top: 30px;
+  margin-bottom: 50px;
 }
+
+.sub-nav li {
+  margin-left: 40px;
+}
+
+.sub-nav li a {
+  color: black;
+  text-decoration: none;
+  padding: 8px 0;
+  font-size: 90%;
+  text-transform: uppercase;
+  border-bottom: 2px solid transparent;
+  -webkit-transition: border-bottom 0.2s;
+  transition: border-bottom 0.2s;
+}
+
+.sub-nav li a:hover,
+.sub-nav li a:active {
+  border-bottom: 2px solid #FF4081;
+}
+
 
 /* Sticky navi */
 
@@ -693,7 +726,25 @@ footer p {
   color: #dd4b39;
 }
 
+/* ----------------------------------- */
+/* LEARN MORE */
+/* ----------------------------------- */
+.learn-more img {
+  width: 80%;
+  height: auto;
+  margin: 0 auto;
+}
+.learn-more--location figure {
+  width: 25%;
+  margin: 15px 0;
+}
 
+.learn-more--location figcaption span {
+  display: block;
+  text-align: center;
+}
+
+.learn-more--complete div {
 
 
 

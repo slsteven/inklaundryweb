@@ -6,32 +6,37 @@ app.service('authService', ['$http', '$q',
   function($http, $q) {
 
   // create user variable
-  var user = null;
+  this.user = null;
+  this.userProfile = {};
 
   this.isLoggedIn = function() {
-    if (user) {
+    console.log("is logged in USER", this.user)
+    var deferred = $q.defer();
+
+    if (this.user) {
       return true;
     } else {
-      return false;
+      deferred.reject(false)
     }
+    return deferred.promise;
   };
   // =====================================
   // CHECK USER STATUS ===================
   // =====================================
-  this.getUserStatus = function() {
-    return $http.get('/status') //returns a promise
+  this.getUserProfile = function() {
+
+    var deferred = $q.defer();
+
+    $http.get('/status') //returns a promise
       // handle success
-      .then(function (data) {
-        console.log("Service get user data", data)
-        if(data.status){
-          user = true;
-        } else {
-          user = false;
-        }
+      .then(function (result) {
+        console.log("Service get user data", result.data.user)
+        deferred.resolve(result.data.user)
       },
-      function (data) {
-        user = false;
-      });
+      function (result) {
+        deferred.reject(result);
+      })
+    return deferred.promise;
   }
 
   // user = {email: 'example@email.com', password: 'password'}
@@ -63,19 +68,25 @@ app.service('authService', ['$http', '$q',
 
     var deferred = $q.defer();
 
+    var _this = this;
+
     $http.post('/login', { email: user.email, password: user.password })
       .then(function (data) {
         console.log("data", data)
         if (data.status == 200 && data.data.status) {
-          user = true;
-          deferred.resolve(data);
+          _this.getUserProfile()
+            .then(function(userInfo) {
+              _this.user = true;
+              _this.userProfile = userInfo
+              deferred.resolve(data);
+            })
         } else {
-          user = false;
+          _this.user = false;
           deferred.reject();
         }
       },
       function (data) {
-        user = false;
+        _this.user = false;
         deferred.reject(data);
       });
     return deferred.promise;
@@ -85,9 +96,10 @@ app.service('authService', ['$http', '$q',
   // LOGOUT SERVICE ======================
   // =====================================
   this.logout = function (callback) {
+    var _this = this;
     $http.get('/logout')
       .then(function (resp) {
-        user = false;
+        _this.user = false;
         callback(resp);
       })
   }

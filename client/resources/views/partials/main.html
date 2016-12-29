@@ -6,6 +6,7 @@
       <img src="resources/img/logo-purple.png" class="logo" hide-sm hide-xs>
       <!-- <img src="resources/img/logo-pink.png" class="logo-black" hide-sm> -->
       <ul class="main-nav" layout="row">
+        <li><a ui-sref="learn_more">Learn More</a></li>
         <li><a ui-sref="gallery">Gallery</a></li>
         <li><a ui-sref="contact">Contact</a></li>
         <li><a ui-sref="login">Login</a></li>
@@ -20,8 +21,11 @@
     <h3>Students, startups, restaurants, local businesses and more.</h3>
     <div layout-xs="row">
       <a class="btn btn-full" href="" ng-click="scrollTo('section-plans')">Price Quote</a>
-      <a class="btn btn-ghost" href="" ng-click="scrollTo('section-steps')">Details</a>
+      <a class="btn btn-ghost" ui-sref="learn_more">Learn More</a>
     </div>
+  </div>
+  <div class="referral-box" layout="row" layout-align="end none">
+    <h3>Refer an order and get 10%!</h3>
   </div>
 </header>
 
@@ -46,7 +50,7 @@
         <div>3</div>
         <p>Give approval for printing!</p>
       </div>
-      <p>We are happy to help! Please contact us for more details.</p>
+      <span class="md-title">Merchandise and silk screen printing quality 100% gauranteed!</span>
       <!-- <a href="#" class="btn-app">Ordering for your school class?</a> -->
       <!-- <a href="#" class="btn-app"><img src="resources/img/download-app-android.png" alt="app store button"></a> -->
     </div>
@@ -105,7 +109,7 @@
 </section>
 
 <section id="section-group" class="section-group">
-  <div layout="column">
+  <div layout="column" layout-align="center center">
     <h2>Group ordering - Spot on sizing</h2>
     <p class="long-copy">Each member of your group can pick their own size using our online form to accurately predict quantity before printing your order.</p>
   </div>
@@ -142,10 +146,10 @@
       </div>
       <div>
         <ul>
-          <li><ng-md-icon icon="whatshot" style="fill: #FF4081" size="20"></ng-md-icon>student favorite</li>
+          <li><ng-md-icon icon="whatshot" style="fill: #FF4081" size="20"></ng-md-icon>Student favorite</li>
           <li><ng-md-icon icon="done" style="fill: #FF4081" size="20"></ng-md-icon>Brand: Gildan</li>
           <li><ng-md-icon icon="done" style="fill: #FF4081" size="20"></ng-md-icon>No. of Colors: 1-3</li>
-          <li><ng-md-icon icon="done" style="fill: #FF4081" size="20"></ng-md-icon>free delivery</li>
+          <li><ng-md-icon icon="done" style="fill: #FF4081" size="20"></ng-md-icon>Free delivery</li>
         </ul>
       </div>
     </div>
@@ -159,8 +163,8 @@
         <ul>
           <li><ng-md-icon icon="done" style="fill: #FF4081" size="20"></ng-md-icon>Brand: Bella, Next Level</li>
           <li><ng-md-icon icon="done" style="fill: #FF4081" size="20"></ng-md-icon>No. of Colors: 1-3</li>
-          <li><ng-md-icon icon="done" style="fill: #FF4081" size="20"></ng-md-icon>access to newest creation</li>
-          <li><ng-md-icon icon="done" style="fill: #FF4081" size="20"></ng-md-icon>free delivery</li>
+          <li><ng-md-icon icon="done" style="fill: #FF4081" size="20"></ng-md-icon>Access to newest creation</li>
+          <li><ng-md-icon icon="done" style="fill: #FF4081" size="20"></ng-md-icon>Free delivery</li>
         </ul>
       </div>
     </div>
@@ -174,8 +178,8 @@
         <ul>
           <li><ng-md-icon icon="done" style="fill: #FF4081" size="20"></ng-md-icon>Brand: American Apparel</li>
           <li><ng-md-icon icon="done" style="fill: #FF4081" size="20"></ng-md-icon>No. of Colors: 1-3</li>
-          <li><ng-md-icon icon="done" style="fill: #FF4081" size="20"></ng-md-icon>access to newest creation</li>
-          <li><ng-md-icon icon="done" style="fill: #FF4081" size="20"></ng-md-icon>free delivery</li>
+          <li><ng-md-icon icon="done" style="fill: #FF4081" size="20"></ng-md-icon>Access to newest creation</li>
+          <li><ng-md-icon icon="done" style="fill: #FF4081" size="20"></ng-md-icon>Free delivery</li>
         </ul>
       </div>
     </div>
@@ -209,3 +213,5 @@
     <p>Copyright &copy; 2016 Ink Laundry. All rights reserved</p>
   </div>
 </footer>
+
+
